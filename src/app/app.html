@@ -8,15 +8,45 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Animated Background -->
+    <div class="liquid-ether-background" id="liquidEther"></div>
+
+    <!-- Mobile Hamburger Menu -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Mobile Sidebar Navigation -->
+    <nav class="mobile-sidebar" id="mobileSidebar">
+        <div class="mobile-sidebar-header">
+            <div class="mobile-sidebar-profile">
+                <img src="profile.png" alt="Profile" class="mobile-profile-pic">
+                <h3>Menu</h3>
+            </div>
+            <button class="mobile-sidebar-close" id="mobileSidebarClose">&times;</button>
+        </div>
+        <div class="mobile-sidebar-links">
+            <a href="#home" class="mobile-nav-link">HOME</a>
+            <a href="#about" class="mobile-nav-link">ABOUT ME</a>
+            <a href="#contact" class="mobile-nav-link">CONTACT ME</a>
+            <a href="#projects" class="mobile-nav-link">WHAT I DO</a>
+            <a href="/CASINGAL_JOHN PHILLIP_CV.pdf" target="_blank" class="mobile-nav-link cv-link">VIEW MY CV</a>
+        </div>
+    </nav>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div class="mobile-sidebar-overlay" id="mobileSidebarOverlay"></div>
+
     <!-- Sticky Top Navigation -->
     <nav class="sticky-nav" id="stickyNav">
         <div class="sticky-nav-container">
             <div class="sticky-profile">
                 <img src="profile.png" alt="Profile" class="sticky-profile-pic">
-                <span class="sticky-profile-name">Phillip Casingal</span>
             </div>
             <a href="/CASINGAL_JOHN PHILLIP_CV.pdf" target="_blank" class="sticky-cv-button">
-                <span>View CV</span>
+                View CV
             </a>
         </div>
     </nav>
@@ -26,22 +56,17 @@
         <!-- Main content -->
         <main id="home">
             <div class="profile-section">
-                <div class="profile-image">
-                    <img src="profile.png" alt="Profile Picture" class="profile-pic">
-                    <div class="profile-name">Phillip Casingal</div>
-                </div>
-                <div class="profile-right">
-                    <div class="profile-name-right">Phillip Casingal</div>
-                    <a href="/CASINGAL_JOHN PHILLIP_CV.pdf " target="_blank" class="cv-button">
-                        <img src="ViewCV.svg" alt="View CV" width="197" height="66">
-                        <span class="cv-text">View CV</span>
-                    </a>
+                <div class="lanyard-wrapper">
+                    <div class="lanyard-rope"></div>
+                    <div class="lanyard-card">
+                        <img src="profile.png" alt="Profile" class="lanyard-profile-img">
+                    </div>
                 </div>
             </div>
 
             <div class="title-section">
-                <img src="developer.svg" alt="Developer" class="title-image">
-                <img src="Designer.svg" alt="Designer" class="title-designer">
+                <h1 class="title-text title-developer-text"></h1>
+                <h1 class="title-text title-designer-text"></h1>
             </div>
 
             <div class="social-icons">
@@ -63,6 +88,9 @@
             <a href="#about">ABOUT ME</a>
             <a href="#contact">CONTACT ME</a>
             <a href="#projects">WHAT I DO</a>
+            <a href="/CASINGAL_JOHN PHILLIP_CV.pdf" target="_blank" class="cv-nav-button">
+                <span>VIEW MY CV</span>
+            </a>
         </nav>
 
         <!-- About section -->
@@ -379,7 +407,7 @@
                         <img src="figmaicon.svg" alt="Figma" class="skill-icon">
                     </div>
                     <div class="skill-item">
-                        <img src="vscode.webp" alt="VS Code" class="skill-icon">
+                        <img src="vscode.png" alt="VS Code" class="skill-icon">
                     </div>
                     <div class="skill-item">
                         <img src="csharp.png" alt="C#" class="skill-icon">
@@ -392,6 +420,33 @@
                     </div>
                     <div class="skill-item">
                         <img src="react-logo-1.png" alt="React" class="skill-icon" loading="lazy" width="60" height="60">
+                    </div>
+                    <div class="skill-item">
+                        <img src="aws-amplify.png" alt="AWS Amplify" class="skill-icon">
+                    </div>
+                    <div class="skill-item">
+                        <img src="aws-ec2.png" alt="AWS EC2" class="skill-icon">
+                    </div>
+                    <div class="skill-item">
+                        <img src="godaddy.png" alt="GoDaddy" class="skill-icon">
+                    </div>
+                    <div class="skill-item">
+                        <img src="sqlite.png" alt="SQLite" class="skill-icon">
+                    </div>
+                    <div class="skill-item">
+                        <img src="mongodb.png" alt="MongoDB" class="skill-icon">
+                    </div>
+                    <div class="skill-item">
+                        <img src="elevenlabs.png" alt="ElevenLabs" class="skill-icon">
+                    </div>
+                    <div class="skill-item">
+                        <img src="openai.png" alt="OpenAI" class="skill-icon">
+                    </div>
+                    <div class="skill-item">
+                        <img src="firebase.png" alt="Firebase" class="skill-icon">
+                    </div>
+                    <div class="skill-item">
+                        <img src="vercel.png" alt="Vercel" class="skill-icon">
                     </div>
                 </div>
             </div>
