@@ -1692,21 +1692,6 @@ main {
         display: none !important;
     }
 
-    /* Ensure liquid ether is visible on mobile */
-    .liquid-ether-background {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        z-index: 0 !important;
-        background: radial-gradient(ellipse at center, #1a0033 0%, #000000 100%) !important;
-    }
-
-    .liquid-ether-background canvas {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 0.8 !important;
-        z-index: 0 !important;
-    }
 
     /* Title section */
     .title-section {
@@ -1715,7 +1700,7 @@ main {
     }
 
     .title-text {
-        font-size: 105px;
+        font-size: 75px;
         line-height: 1.2;
     }
 
@@ -1860,7 +1845,9 @@ main {
     }
 
     .social-links {
-        justify-content: center;
+        justify-content: center !important;
+        margin-left: -5px !important;
+        padding-left: 0 !important;
     }
 }
 
