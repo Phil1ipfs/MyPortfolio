@@ -149,25 +149,28 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
       observer.observe(section);
     });
 
-    // Staggered fade-in for "What I Do" project items
-    const projectItems = document.querySelectorAll('.project-item');
-    const projectObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add('fade-in-visible');
-          }, index * 150);
-        }
+    // Staggered fade-in for "What I Do" project items (desktop only)
+    const isMobile = window.innerWidth <= 768;
+    if (!isMobile) {
+      const projectItems = document.querySelectorAll('.project-item');
+      const projectObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add('fade-in-visible');
+            }, index * 150);
+          }
+        });
+      }, {
+        threshold: 0.05,
+        rootMargin: '0px 0px 50px 0px'
       });
-    }, {
-      threshold: 0.05,
-      rootMargin: '0px 0px 50px 0px'
-    });
 
-    projectItems.forEach((item) => {
-      item.classList.add('fade-in-scroll');
-      projectObserver.observe(item);
-    });
+      projectItems.forEach((item) => {
+        item.classList.add('fade-in-scroll');
+        projectObserver.observe(item);
+      });
+    }
   }
 
   private initMobileSidebar(): void {
