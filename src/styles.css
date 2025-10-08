@@ -1,1 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    width: 100%;
+    height: 100%;
+    background-color: #252020;
+    overflow-x: hidden;
+}
+
+app-root {
+    display: block;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #252020;
+}
+
+/* Remove any browser default styling that creates white borders */
+html > body,
+body > app-root,
+app-root > * {
+    box-shadow: none !important;
+    border: 0 !important;
+    outline: 0 !important;
+}
