@@ -1938,7 +1938,7 @@ main {
 
     .about-image-container {
         flex: 0 0 100%;
-        max-width: 85%;
+        max-width: 90%;
         margin: 0 auto;
         padding: 15px 12px 12px 12px;
     }
@@ -2050,6 +2050,44 @@ main {
     }
 
     .project-image {
+        width: 100%;
+        height: auto;
+    }
+
+    /* What I Do section for mobile */
+    .what-i-do-section {
+        padding: 40px 0;
+    }
+
+    .project-container {
+        padding: 0 15px;
+    }
+
+    .project-item {
+        flex-direction: column;
+        margin-bottom: 40px;
+    }
+
+    .project-info {
+        flex: 0 0 100%;
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .project-info h3 {
+        font-size: 24px;
+    }
+
+    .project-info p {
+        font-size: 14px;
+    }
+
+    .project-image {
+        flex: 0 0 100%;
+        width: 100%;
+    }
+
+    .project-image img {
         width: 100%;
         height: auto;
     }
