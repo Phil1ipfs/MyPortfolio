@@ -124,7 +124,49 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
       // Initialize Mobile Sidebar
       this.initMobileSidebar();
 
+      // Initialize Scroll Fade Animation
+      this.initScrollFadeAnimation();
+
     }, 100);
+  }
+
+  private initScrollFadeAnimation(): void {
+    const sections = document.querySelectorAll('section, .profile-section, .title-section');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in-visible');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    });
+
+    sections.forEach(section => {
+      section.classList.add('fade-in-scroll');
+      observer.observe(section);
+    });
+
+    // Staggered fade-in for "What I Do" project items
+    const projectItems = document.querySelectorAll('.project-item');
+    const projectObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in-visible');
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    projectItems.forEach((item, index) => {
+      item.classList.add('fade-in-scroll');
+      (item as HTMLElement).style.transitionDelay = `${index * 0.2}s`;
+      projectObserver.observe(item);
+    });
   }
 
   private initMobileSidebar(): void {
