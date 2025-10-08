@@ -1697,12 +1697,15 @@ main {
         display: block !important;
         visibility: visible !important;
         opacity: 1 !important;
+        z-index: 0 !important;
+        background: radial-gradient(ellipse at center, #1a0033 0%, #000000 100%) !important;
     }
 
     .liquid-ether-background canvas {
         display: block !important;
         visibility: visible !important;
-        opacity: 1 !important;
+        opacity: 0.8 !important;
+        z-index: 0 !important;
     }
 
     /* Title section */
@@ -1712,7 +1715,7 @@ main {
     }
 
     .title-text {
-        font-size: 75px;
+        font-size: 105px;
         line-height: 1.2;
     }
 
