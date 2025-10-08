@@ -6,6 +6,8 @@ export interface LanyardDragOptions {
   friction?: number;
   gravity?: number;
   maxRotation?: number;
+  elasticity?: number;
+  springStrength?: number;
 }
 
 export class LanyardDrag {
@@ -16,6 +18,7 @@ export class LanyardDrag {
   // Physics properties
   private velocityX = 0;
   private velocityY = 0;
+  private positionY = 0;
   private rotation = 0;
   private velocityRotation = 0;
 
@@ -24,16 +27,22 @@ export class LanyardDrag {
   private lastMouseY = 0;
   private mouseX = 0;
   private mouseY = 0;
+  private dragStartY = 0;
 
   // Animation
   private rafId?: number;
 
+  // Original position
+  private originalTop = 115;
+
   constructor(card: HTMLElement, options: LanyardDragOptions = {}) {
     this.card = card;
     this.options = {
-      friction: options.friction ?? 0.95,
-      gravity: options.gravity ?? 0.5,
-      maxRotation: options.maxRotation ?? 25
+      friction: options.friction ?? 0.98,
+      gravity: options.gravity ?? 0.8,
+      maxRotation: options.maxRotation ?? 25,
+      elasticity: options.elasticity ?? 0.6,
+      springStrength: options.springStrength ?? 0.15
     };
 
     this.init();
@@ -66,6 +75,7 @@ export class LanyardDrag {
     this.lastMouseY = e.clientY;
     this.mouseX = e.clientX;
     this.mouseY = e.clientY;
+    this.dragStartY = e.clientY;
 
     this.velocityX = 0;
     this.velocityY = 0;
@@ -91,7 +101,7 @@ export class LanyardDrag {
     const deltaY = this.mouseY - this.lastMouseY;
 
     this.velocityX = deltaX;
-    this.velocityY = deltaY;
+    this.velocityY = deltaY * 0.8;
     this.velocityRotation = deltaX * 0.3;
   }
 
@@ -105,6 +115,7 @@ export class LanyardDrag {
     this.lastMouseY = touch.clientY;
     this.mouseX = touch.clientX;
     this.mouseY = touch.clientY;
+    this.dragStartY = touch.clientY;
 
     this.velocityX = 0;
     this.velocityY = 0;
@@ -131,7 +142,7 @@ export class LanyardDrag {
     const deltaY = this.mouseY - this.lastMouseY;
 
     this.velocityX = deltaX;
-    this.velocityY = deltaY;
+    this.velocityY = deltaY * 0.8;
     this.velocityRotation = deltaX * 0.3;
   }
 

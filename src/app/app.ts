@@ -152,19 +152,20 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
     // Staggered fade-in for "What I Do" project items
     const projectItems = document.querySelectorAll('.project-item');
     const projectObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in-visible');
+          setTimeout(() => {
+            entry.target.classList.add('fade-in-visible');
+          }, index * 150);
         }
       });
     }, {
-      threshold: 0.15,
-      rootMargin: '0px 0px -50px 0px'
+      threshold: 0.05,
+      rootMargin: '0px 0px 50px 0px'
     });
 
-    projectItems.forEach((item, index) => {
+    projectItems.forEach((item) => {
       item.classList.add('fade-in-scroll');
-      (item as HTMLElement).style.transitionDelay = `${index * 0.2}s`;
       projectObserver.observe(item);
     });
   }
