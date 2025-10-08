@@ -491,7 +491,7 @@ main {
 
 @media (max-width: 768px) {
     .title-text {
-        font-size: 80px;
+        font-size: 95px;
         letter-spacing: 4px;
     }
 
@@ -1692,21 +1692,34 @@ main {
         display: none !important;
     }
 
+    /* Ensure liquid ether is visible on mobile */
+    .liquid-ether-background {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .liquid-ether-background canvas {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
     /* Title section */
     .title-section {
-        margin: 80px 0 30px 0;
-        gap: 10px;
+        margin: 80px 0 50px 0;
+        gap: 15px;
     }
 
     .title-text {
-        font-size: 42px;
+        font-size: 75px;
         line-height: 1.2;
     }
 
     .title-developer-text,
     .title-designer-text {
         display: block;
-        margin: 5px 0;
+        margin: 10px 0;
     }
 
     /* Social icons */
@@ -1723,8 +1736,9 @@ main {
 
     /* About section */
     .about-section {
-        padding: 40px 0;
-        margin-bottom: 80px;
+        padding: 100px 0;
+        margin-top: 200px;
+        margin-bottom: 200px;
     }
 
     .about-container {
