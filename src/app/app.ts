@@ -3,6 +3,7 @@ import { LiquidEtherFull } from './liquid-ether-full';
 import { ProfileCard } from './profile-card';
 import { BlurText } from './blur-text';
 import { LanyardDrag } from './lanyard-drag';
+import { ProfileCardTilt } from './profile-card-tilt';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
   private blurTextDeveloper?: BlurText;
   private blurTextDesigner?: BlurText;
   private lanyardDrag?: LanyardDrag;
+  private profileCardTilt?: ProfileCardTilt;
 
   ngOnInit(): void {}
 
@@ -51,23 +53,17 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
         console.error('Container #liquidEther not found');
       }
 
-      // Initialize ProfileCard for About section image
+      // Initialize ProfileCardTilt for About section card rotation
       const aboutImageContainer = document.querySelector('.about-image-container') as HTMLElement;
       if (aboutImageContainer) {
         try {
-          this.profileCard = new ProfileCard(aboutImageContainer, {
-            maxTilt: 10,
-            scale: 1.08,
-            speed: 500,
-            perspective: 1000,
-            glareEnable: true,
-            glareMaxOpacity: 0.3,
-            glareColor: '#B19EEF',
-            glarePosition: 'bottom'
+          this.profileCardTilt = new ProfileCardTilt(aboutImageContainer, {
+            enableTilt: true,
+            maxTilt: 70
           });
-          console.log('ProfileCard initialized successfully');
+          console.log('ProfileCardTilt initialized successfully');
         } catch (error) {
-          console.error('Error initializing ProfileCard:', error);
+          console.error('Error initializing ProfileCardTilt:', error);
         }
       }
 
@@ -190,6 +186,9 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
     }
     if (this.lanyardDrag) {
       this.lanyardDrag.dispose();
+    }
+    if (this.profileCardTilt) {
+      this.profileCardTilt.dispose();
     }
   }
 }
