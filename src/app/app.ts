@@ -4,6 +4,9 @@ import { ProfileCard } from './profile-card';
 import { BlurText } from './blur-text';
 import { LanyardDrag } from './lanyard-drag';
 import { ProfileCardTilt } from './profile-card-tilt';
+import { CardSwap } from './card-swap';
+import { ChromaGrid } from './chroma-grid';
+import { Typewriter } from './typewriter';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +21,10 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
   private blurTextDesigner?: BlurText;
   private lanyardDrag?: LanyardDrag;
   private profileCardTilt?: ProfileCardTilt;
+  private cardSwap?: CardSwap;
+  private chromaGrid?: ChromaGrid;
+  private typewriter?: Typewriter;
+  private typewriterTriggered: boolean = false;
 
   ngOnInit(): void {}
 
@@ -109,9 +116,14 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
       if (lanyardCard) {
         try {
           this.lanyardDrag = new LanyardDrag(lanyardCard, {
-            friction: 0.95,
-            gravity: 0.5,
-            maxRotation: 25
+            friction: 0.92,
+            gravity: 0.15,
+            maxRotation: 30,
+            springStrength: 0.1,
+            bounceStrength: 0.5,
+            stretchFactor: 0.65,
+            dragRotationFactor: 0.2,
+            flipSpeed: 0.18
           });
           console.log('Lanyard drag initialized successfully');
         } catch (error) {
@@ -127,7 +139,76 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
       // Initialize Scroll Fade Animation
       this.initScrollFadeAnimation();
 
+      // Initialize Card Swap for Certifications
+      const cardSwapContainer = document.getElementById('cardSwapContainer');
+      if (cardSwapContainer) {
+        try {
+          this.cardSwap = new CardSwap(cardSwapContainer, {
+            cardDistance: 60,
+            verticalDistance: 70,
+            delay: 5000,
+            pauseOnHover: true,
+            skewAmount: 6,
+            easing: 'elastic'
+          });
+          console.log('CardSwap initialized successfully');
+        } catch (error) {
+          console.error('Error initializing CardSwap:', error);
+        }
+      }
+
+      // Initialize Chroma Grid for Projects
+      const chromaGridContainer = document.getElementById('chromaGrid');
+      if (chromaGridContainer) {
+        try {
+          this.chromaGrid = new ChromaGrid(chromaGridContainer, {
+            radius: 300,
+            columns: 3,
+            rows: 2,
+            damping: 0.45,
+            fadeOut: 0.6,
+            ease: 'power3.out'
+          });
+          console.log('ChromaGrid initialized successfully');
+        } catch (error) {
+          console.error('Error initializing ChromaGrid:', error);
+        }
+      }
+
+      // Initialize Typewriter for About section
+      this.initTypewriter();
+
     }, 100);
+  }
+
+  private initTypewriter(): void {
+    const typewriterElement = document.getElementById('aboutTypewriter');
+    if (!typewriterElement) return;
+
+    this.typewriter = new Typewriter(typewriterElement, {
+      speed: 30,
+      delay: 500,
+      cursor: true
+    });
+
+    // Create Intersection Observer to trigger typewriter on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !this.typewriterTriggered) {
+          this.typewriterTriggered = true;
+          if (this.typewriter) {
+            this.typewriter.start();
+          }
+        }
+      });
+    }, {
+      threshold: 0.3
+    });
+
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      observer.observe(aboutSection);
+    }
   }
 
   private initScrollFadeAnimation(): void {
@@ -235,6 +316,15 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
     }
     if (this.profileCardTilt) {
       this.profileCardTilt.dispose();
+    }
+    if (this.cardSwap) {
+      this.cardSwap.dispose();
+    }
+    if (this.chromaGrid) {
+      this.chromaGrid.dispose();
+    }
+    if (this.typewriter) {
+      this.typewriter.dispose();
     }
   }
 }

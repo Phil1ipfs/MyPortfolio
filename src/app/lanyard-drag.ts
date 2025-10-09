@@ -8,10 +8,15 @@ export interface LanyardDragOptions {
   maxRotation?: number;
   elasticity?: number;
   springStrength?: number;
+  stretchFactor?: number;
+  bounceStrength?: number;
+  dragRotationFactor?: number;
+  flipSpeed?: number;
 }
 
 export class LanyardDrag {
   private card: HTMLElement;
+  private rope: HTMLElement | null = null;
   private options: Required<LanyardDragOptions>;
   private isDragging = false;
 
@@ -21,6 +26,7 @@ export class LanyardDrag {
   private positionY = 0;
   private rotation = 0;
   private velocityRotation = 0;
+  private scaleY = 1;
 
   // Mouse tracking
   private lastMouseX = 0;
@@ -33,16 +39,21 @@ export class LanyardDrag {
   private rafId?: number;
 
   // Original position
-  private originalTop = 115;
+  private originalTop = 0;
+  private originalY = 0;
 
   constructor(card: HTMLElement, options: LanyardDragOptions = {}) {
     this.card = card;
     this.options = {
-      friction: options.friction ?? 0.98,
-      gravity: options.gravity ?? 0.8,
-      maxRotation: options.maxRotation ?? 25,
-      elasticity: options.elasticity ?? 0.6,
-      springStrength: options.springStrength ?? 0.15
+      friction: options.friction ?? 0.92,
+      gravity: options.gravity ?? 0.15,
+      maxRotation: options.maxRotation ?? 30,
+      elasticity: options.elasticity ?? 0.7,
+      springStrength: options.springStrength ?? 0.1,
+      stretchFactor: options.stretchFactor ?? 0.65,
+      bounceStrength: options.bounceStrength ?? 0.5,
+      dragRotationFactor: options.dragRotationFactor ?? 0.2,
+      flipSpeed: options.flipSpeed ?? 0.18
     };
 
     this.init();
@@ -51,6 +62,12 @@ export class LanyardDrag {
   private init() {
     console.log('LanyardDrag: Initializing drag on card:', this.card);
     this.card.style.cursor = 'grab';
+
+    // Find the rope element
+    const wrapper = this.card.closest('.lanyard-wrapper');
+    if (wrapper) {
+      this.rope = wrapper.querySelector('.lanyard-rope') as HTMLElement;
+    }
 
     this.card.addEventListener('mousedown', this.onMouseDown.bind(this));
     document.addEventListener('mousemove', this.onMouseMove.bind(this));
@@ -150,39 +167,84 @@ export class LanyardDrag {
     this.rafId = requestAnimationFrame(() => this.animate());
 
     if (this.isDragging) {
-      // Apply drag movement
+      // Calculate drag delta
+      const deltaY = this.mouseY - this.dragStartY;
       const deltaX = this.mouseX - this.lastMouseX;
-      this.rotation += deltaX * 0.2;
 
-      // Clamp rotation
-      this.rotation = Math.max(-this.options.maxRotation, Math.min(this.options.maxRotation, this.rotation));
+      // Apply stretch effect - only allow downward drag
+      if (deltaY > 0) {
+        this.positionY = deltaY * this.options.stretchFactor;
 
-      this.card.style.transform = `translateX(-50%) rotate(${this.rotation}deg)`;
+        // Elastic stretch - card stretches vertically
+        this.scaleY = 1 + (deltaY * 0.001);
+
+        // Stretch the rope
+        if (this.rope) {
+          const stretchAmount = 100 + (deltaY * 0.3);
+          this.rope.style.height = `${stretchAmount}px`;
+        }
+      } else {
+        this.positionY = 0;
+        this.scaleY = 1;
+        if (this.rope) {
+          this.rope.style.height = '100px';
+        }
+      }
+
+      // Add rotation based on drag distance and horizontal movement
+      const dragRotation = (this.positionY * this.options.dragRotationFactor);
+      this.rotation += deltaX * 0.1;
+      const targetRotation = this.rotation + dragRotation;
+      this.rotation = Math.max(-this.options.maxRotation, Math.min(this.options.maxRotation, targetRotation));
+
+      this.card.style.transform = `translateX(-50%) translateY(${this.positionY}px) rotate(${this.rotation}deg) scaleY(${this.scaleY})`;
     } else {
-      // Apply physics when not dragging
+      // Spring back with bounce effect
+      const springForce = -this.positionY * this.options.springStrength;
+      this.velocityY += springForce;
+
+      // Add gravity for natural fall
       this.velocityY += this.options.gravity;
-      this.velocityX *= this.options.friction;
+
+      // Apply velocity
+      this.positionY += this.velocityY;
+
+      // Apply friction
       this.velocityY *= this.options.friction;
       this.velocityRotation *= this.options.friction;
 
+      // Bounce when reaching original position
+      if (this.positionY < 0) {
+        this.positionY = 0;
+        this.velocityY *= -this.options.bounceStrength; // Bounce back
+      }
+
+      // Scale back to normal with smooth easing
+      this.scaleY += (1 - this.scaleY) * 0.2;
+
+      // Rotation snap back with flip effect - smooth easing
+      const rotationSpring = -this.rotation * this.options.flipSpeed;
+      this.velocityRotation += rotationSpring;
       this.rotation += this.velocityRotation;
+      this.rotation *= 0.94;
 
-      // Spring back to center
-      const returnForce = -this.rotation * 0.05;
-      this.velocityRotation += returnForce;
-
-      // Damping
-      this.rotation *= 0.95;
-
-      // Clamp rotation
-      this.rotation = Math.max(-this.options.maxRotation, Math.min(this.options.maxRotation, this.rotation));
+      // Update rope stretch
+      if (this.rope) {
+        const ropeHeight = 100 + (this.positionY * 0.3);
+        this.rope.style.height = `${Math.max(100, ropeHeight)}px`;
+      }
 
       // Stop small movements
-      if (Math.abs(this.velocityX) < 0.1 && Math.abs(this.velocityY) < 0.1 && Math.abs(this.velocityRotation) < 0.1 && Math.abs(this.rotation) < 0.5) {
-        this.velocityX = 0;
+      if (Math.abs(this.velocityY) < 0.1 && Math.abs(this.positionY) < 0.5 && Math.abs(this.velocityRotation) < 0.1 && Math.abs(this.rotation) < 0.5) {
         this.velocityY = 0;
         this.velocityRotation = 0;
         this.rotation = 0;
+        this.positionY = 0;
+        this.scaleY = 1;
+
+        if (this.rope) {
+          this.rope.style.height = '100px';
+        }
 
         // Resume swing animation when settled
         if (this.card.style.animation === 'none') {
@@ -190,7 +252,7 @@ export class LanyardDrag {
         }
       }
 
-      this.card.style.transform = `translateX(-50%) rotate(${this.rotation}deg)`;
+      this.card.style.transform = `translateX(-50%) translateY(${this.positionY}px) rotate(${this.rotation}deg) scaleY(${this.scaleY})`;
     }
   }
 

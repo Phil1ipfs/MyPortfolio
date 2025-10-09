@@ -116,7 +116,7 @@
                 </div>
                 <div class="about-content">
                     <h2>ABOUT ME</h2>
-                    <p>
+                    <p id="aboutTypewriter" class="about-typewriter-text">
                         Aspiring Mobile and Web Application at National University. Through my volunteer work, Organization I have gained
                         valuable experience and developed a strong commitment to lifelong learning and
                         collaborative teamwork. I possess excellent communication and leadership skills
@@ -141,17 +141,44 @@
         <!-- Certifications section -->
         <section class="certifications-section">
             <div class="certifications-container">
-                <h2 class="certifications-title">MY CERTIFICATIONS</h2>
-                <div class="certifications-grid">
-                        <img src="cert1.svg" alt="Certification 1" class="certification-image">
-                        <img src="cert2.svg" alt="Certification 2" class="certification-image">
-                        <img src="cert3.svg" alt="Certification 3" class="certification-image">
-                        <img src="cert4.svg" alt="Certification 4" class="certification-image">
-                        <img src="cert5.svg" alt="Certification 5" class="certification-image">
-                        <img src="cert6.svg" alt="Certification 6" class="certification-image">
-                        <img src="cert7.svg" alt="Certification 7" class="certification-image">
-                        <img src="cert8.svg" alt="Certification 8" class="certification-image">
-                        <img src="cert9.svg" alt="Certification 9" class="certification-image">
+                <div class="certifications-content">
+                    <div class="certifications-text">
+                       <h2 class="certifications-title">Certifications</h2>
+                        <p class="certifications-subtitle">Verified credentials that reflect my growth</p>
+                        <p class="certifications-description">Each certificate represents a milestone in my journey</p>
+
+                    </div>
+                    <div class="card-swap-wrapper" id="cardSwapWrapper">
+                        <div class="card-swap-container" id="cardSwapContainer">
+                            <div class="card">
+                                <img src="cert1.svg" alt="Certification 1" class="certification-image">
+                            </div>
+                            <div class="card">
+                                <img src="cert2.svg" alt="Certification 2" class="certification-image">
+                            </div>
+                            <div class="card">
+                                <img src="cert3.svg" alt="Certification 3" class="certification-image">
+                            </div>
+                            <div class="card">
+                                <img src="cert4.svg" alt="Certification 4" class="certification-image">
+                            </div>
+                            <div class="card">
+                                <img src="cert5.svg" alt="Certification 5" class="certification-image">
+                            </div>
+                            <div class="card">
+                                <img src="cert6.svg" alt="Certification 6" class="certification-image">
+                            </div>
+                            <div class="card">
+                                <img src="cert7.svg" alt="Certification 7" class="certification-image">
+                            </div>
+                            <div class="card">
+                                <img src="cert8.svg" alt="Certification 8" class="certification-image">
+                            </div>
+                            <div class="card">
+                                <img src="cert9.svg" alt="Certification 9" class="certification-image">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -161,8 +188,159 @@
             <div class="section-title">
                 <h2>What I Do</h2>
             </div>
-            
-            <div class="project-container">
+
+            <div class="chroma-grid" id="chromaGrid">
+                <!-- Project 1: Amber -->
+                <article class="chroma-card" style="--card-border: #4F46E5; --card-gradient: linear-gradient(145deg, #4F46E5, #000);">
+                    <div class="chroma-img-wrapper">
+                        <img src="amber.svg" alt="Amber Project" loading="lazy">
+                    </div>
+                    <footer class="chroma-info">
+                        <h3 class="name">AMBER</h3>
+                        <p class="role">Traditional Filipino Food Website</p>
+                        <p class="description">A modern and visually engaging website featuring bold red and yellow branding, interactive elements.</p>
+                        <div class="tech-stack">
+                            <span class="tech"><img src="figmaicon.svg" alt="Figma">Figma</span>
+                            <span class="tech"><img src="htmlicon.svg" alt="HTML5">HTML5</span>
+                            <span class="tech"><img src="cssicon.svg" alt="CSS3">CSS3</span>
+                            <span class="tech"><img src="JSicon.svg" alt="JavaScript">JavaScript</span>
+                        </div>
+                    </footer>
+                </article>
+
+                <!-- Project 2: Pinkvintory -->
+                <article class="chroma-card" style="--card-border: #10B981; --card-gradient: linear-gradient(210deg, #10B981, #000);">
+                    <div class="chroma-img-wrapper">
+                        <img src="pinkventory.svg" alt="Pinkvintory Project" loading="lazy">
+                    </div>
+                    <footer class="chroma-info">
+                        <h3 class="name">Pinkvintory</h3>
+                        <p class="role">Inventory Tracking System</p>
+                        <p class="description">User-friendly inventory tracking system with real-time updates, analytics for efficient stock management, and optimized backend solutions.</p>
+                        <div class="tech-stack">
+                            <span class="tech"><img src="figmaicon.svg" alt="Figma">Figma</span>
+                            <span class="tech"><img src="htmlicon.svg" alt="HTML5">HTML5</span>
+                            <span class="tech"><img src="cssicon.svg" alt="CSS3">CSS3</span>
+                            <span class="tech"><img src="JSicon.svg" alt="JavaScript">JavaScript</span>
+                            <span class="tech"><img src="phpicon.svg" alt="PHP">PHP</span>
+                            <span class="tech"><img src="mysqlicon.svg" alt="MySQL">MySQL</span>
+                        </div>
+                    </footer>
+                </article>
+
+                <!-- Project 3: NU-Learn -->
+                <article class="chroma-card" style="--card-border: #F59E0B; --card-gradient: linear-gradient(165deg, #F59E0B, #000);">
+                    <div class="chroma-img-wrapper">
+                        <img src="elearning.svg" alt="NU-Learn Project" loading="lazy">
+                    </div>
+                    <footer class="chroma-info">
+                        <h3 class="name">NU-Learn</h3>
+                        <p class="role">E-Learning Platform</p>
+                        <p class="description">Sleek and modern landing page featuring minimalistic design, 3D-style illustrations, and user-friendly navigation for an online learning platform.</p>
+                        <div class="tech-stack">
+                            <span class="tech"><img src="figmaicon.svg" alt="Figma">Figma</span>
+                        </div>
+                    </footer>
+                </article>
+
+                <!-- Project 4: AFKAR -->
+                <article class="chroma-card" style="--card-border: #EF4444; --card-gradient: linear-gradient(195deg, #EF4444, #000);">
+                    <div class="chroma-img-wrapper">
+                        <img src="afkar.svg" alt="AFKAR Project" loading="lazy">
+                    </div>
+                    <footer class="chroma-info">
+                        <h3 class="name">AFKAR</h3>
+                        <p class="role">Renewable Energy Website</p>
+                        <p class="description">Modern, clean redesign with vibrant sustainability colors, interactive elements, and data-driven visuals for a renewable energy company.</p>
+                        <div class="tech-stack">
+                            <span class="tech"><img src="figmaicon.svg" alt="Figma">Figma</span>
+                        </div>
+                    </footer>
+                </article>
+
+                <!-- Project 5: COMMUNIFY -->
+                <article class="chroma-card" style="--card-border: #8B5CF6; --card-gradient: linear-gradient(225deg, #8B5CF6, #000);">
+                    <div class="chroma-img-wrapper">
+                        <img src="communify.svg" alt="COMMUNIFY Project" loading="lazy">
+                    </div>
+                    <footer class="chroma-info">
+                        <h3 class="name">COMMUNIFY</h3>
+                        <p class="role">Community Action Mobile App</p>
+                        <p class="description">A powerful mobile app empowering communities to report local issues and drive real change through a dynamic, feedback-driven system.</p>
+                        <div class="tech-stack">
+                            <span class="tech"><img src="figmaicon.svg" alt="Figma">Figma</span>
+                            <span class="tech"><img src="fluttericon.svg" alt="Flutter">Flutter</span>
+                        </div>
+                    </footer>
+                </article>
+
+                <!-- Project 6: EcoDex -->
+                <article class="chroma-card" style="--card-border: #06B6D4; --card-gradient: linear-gradient(135deg, #06B6D4, #000);">
+                    <div class="chroma-img-wrapper">
+                        <img src="ecodex.svg" alt="EcoDex Project" loading="lazy">
+                    </div>
+                    <footer class="chroma-info">
+                        <h3 class="name">EcoDex</h3>
+                        <p class="role">AI Plant Identification App</p>
+                        <p class="description">AI-driven mobile app for plant identification using deep learning, featuring gamification for environmental conservation engagement.</p>
+                        <div class="tech-stack">
+                            <span class="tech"><img src="figmaicon.svg" alt="Figma">Figma</span>
+                        </div>
+                    </footer>
+                </article>
+
+                <!-- Project 7: REUSIFY -->
+                <article class="chroma-card" style="--card-border: #EC4899; --card-gradient: linear-gradient(180deg, #EC4899, #000);">
+                    <div class="chroma-img-wrapper">
+                        <img src="reusify.svg" alt="REUSIFY Project" loading="lazy">
+                    </div>
+                    <footer class="chroma-info">
+                        <h3 class="name">REUSIFY</h3>
+                        <p class="role">Sustainable E-Commerce Platform</p>
+                        <p class="description">Sustainable e-commerce platform connecting consumers with upcycled and reusable products, promoting eco-friendly shopping.</p>
+                        <div class="tech-stack">
+                            <span class="tech"><img src="figmaicon.svg" alt="Figma">Figma</span>
+                        </div>
+                    </footer>
+                </article>
+
+                <!-- Project 8: EveryJuan'a -->
+                <article class="chroma-card" style="--card-border: #2563EB; --card-gradient: linear-gradient(225deg, #2563EB, #000);">
+                    <div class="chroma-img-wrapper">
+                        <img src="everyjuana.png" alt="EveryJuan'a Project" loading="lazy">
+                    </div>
+                    <footer class="chroma-info">
+                        <h3 class="name">EveryJuan'a</h3>
+                        <p class="role">Job Finding Platform</p>
+                        <p class="description">A job finding website designed for Filipino people to discover employment opportunities that fit their skills and preferences.</p>
+                        <div class="tech-stack">
+                            <span class="tech"><img src="javaicon.svg" alt="Java">Java</span>
+                            <span class="tech">Java GUI</span>
+                        </div>
+                    </footer>
+                </article>
+
+                <!-- Project 9: The Pizzeria -->
+                <article class="chroma-card" style="--card-border: #DC2626; --card-gradient: linear-gradient(165deg, #DC2626, #000);">
+                    <div class="chroma-img-wrapper">
+                        <img src="pizzeria.png" alt="The Pizzeria Project" loading="lazy">
+                    </div>
+                    <footer class="chroma-info">
+                        <h3 class="name">The Pizzeria</h3>
+                        <p class="role">Pizza Ordering Website</p>
+                        <p class="description">Delightful Dough Pizzeria - A website project offering delicious pizza ordering with an engaging user experience.</p>
+                        <div class="tech-stack">
+                            <span class="tech"><img src="javaicon.svg" alt="Java">Java</span>
+                            <span class="tech">Java GUI</span>
+                        </div>
+                    </footer>
+                </article>
+
+                <div class="chroma-overlay"></div>
+                <div class="chroma-fade"></div>
+            </div>
+
+            <div class="project-container" style="display: none;">
                 <!-- Project 1: Amber (Image Left, Text Right) -->
                 <div class="project-item">
                     <div class="project-image">
@@ -392,79 +570,531 @@
         <!-- Skills section -->
         <section class="skills-section">
             <div class="skills-container">
-                <h2 class="skills-title">MY SKILLS</h2>
-                <div class="skills-grid">
-                    <div class="skill-item">
-                        <img src="htmlicon.svg" alt="HTML5" class="skill-icon">
+                <h2 class="skills-title">TECH STACK</h2>
+                <!-- First row: scrolls left -->
+                <div class="skills-scroll-wrapper">
+                    <div class="skills-scroll-track">
+                        <div class="skill-item">
+                            <img src="htmlicon.svg" alt="HTML5" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="cssicon.svg" alt="CSS3" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="JSicon.svg" alt="JavaScript" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="phpicon.svg" alt="PHP" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="mysqlicon.svg" alt="MySQL" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="pythonicon.svg" alt="Python" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="javaicon.svg" alt="Java" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="fluttericon.svg" alt="Flutter" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="figmaicon.svg" alt="Figma" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="vscode.png" alt="VS Code" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="csharp.png" alt="C#" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="angular.jpg" alt="Angular" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="vite.webp" alt="Vite" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="react-logo-1.png" alt="React" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="aws-amplify.png" alt="AWS Amplify" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="postman.png" alt="Postman" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="aws-ec2.png" alt="AWS EC2" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="godaddy.png" alt="GoDaddy" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="sqlite.png" alt="SQLite" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="mongodb.png" alt="MongoDB" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="elevenlabs.png" alt="ElevenLabs" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="openai.png" alt="OpenAI" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="firebase.png" alt="Firebase" class="skill-icon">
+                        </div>
+
+                        <!-- Duplicate for infinite loop -->
+                        <div class="skill-item">
+                            <img src="htmlicon.svg" alt="HTML5" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="cssicon.svg" alt="CSS3" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="JSicon.svg" alt="JavaScript" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="phpicon.svg" alt="PHP" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="mysqlicon.svg" alt="MySQL" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="pythonicon.svg" alt="Python" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="javaicon.svg" alt="Java" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="fluttericon.svg" alt="Flutter" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="figmaicon.svg" alt="Figma" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="vscode.png" alt="VS Code" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="csharp.png" alt="C#" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="angular.jpg" alt="Angular" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="vite.webp" alt="Vite" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="react-logo-1.png" alt="React" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="aws-amplify.png" alt="AWS Amplify" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="postman.png" alt="Postman" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="aws-ec2.png" alt="AWS EC2" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="godaddy.png" alt="GoDaddy" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="sqlite.png" alt="SQLite" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="mongodb.png" alt="MongoDB" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="elevenlabs.png" alt="ElevenLabs" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="openai.png" alt="OpenAI" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="firebase.png" alt="Firebase" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="vercel.png" alt="Vercel" class="skill-icon">
+                        </div>
+
+                        <!-- Duplicate for infinite loop -->
+                        <div class="skill-item">
+                            <img src="htmlicon.svg" alt="HTML5" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="cssicon.svg" alt="CSS3" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="JSicon.svg" alt="JavaScript" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="phpicon.svg" alt="PHP" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="mysqlicon.svg" alt="MySQL" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="pythonicon.svg" alt="Python" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="javaicon.svg" alt="Java" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="fluttericon.svg" alt="Flutter" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="figmaicon.svg" alt="Figma" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="vscode.png" alt="VS Code" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="csharp.png" alt="C#" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="angular.jpg" alt="Angular" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="vite.webp" alt="Vite" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="react-logo-1.png" alt="React" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="aws-amplify.png" alt="AWS Amplify" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="postman.png" alt="Postman" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="aws-ec2.png" alt="AWS EC2" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="godaddy.png" alt="GoDaddy" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="sqlite.png" alt="SQLite" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="mongodb.png" alt="MongoDB" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="elevenlabs.png" alt="ElevenLabs" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="openai.png" alt="OpenAI" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="firebase.png" alt="Firebase" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="vercel.png" alt="Vercel" class="skill-icon">
+                        </div>
                     </div>
-                    <div class="skill-item">
-                        <img src="cssicon.svg" alt="CSS3" class="skill-icon">
+                </div>
+
+                <!-- Second row: scrolls right -->
+                <div class="skills-scroll-wrapper skills-scroll-reverse">
+                    <div class="skills-scroll-track">
+                        <div class="skill-item">
+                            <img src="htmlicon.svg" alt="HTML5" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="cssicon.svg" alt="CSS3" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="JSicon.svg" alt="JavaScript" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="phpicon.svg" alt="PHP" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="mysqlicon.svg" alt="MySQL" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="pythonicon.svg" alt="Python" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="javaicon.svg" alt="Java" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="fluttericon.svg" alt="Flutter" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="figmaicon.svg" alt="Figma" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="vscode.png" alt="VS Code" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="csharp.png" alt="C#" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="angular.jpg" alt="Angular" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="vite.webp" alt="Vite" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="react-logo-1.png" alt="React" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="aws-amplify.png" alt="AWS Amplify" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="postman.png" alt="Postman" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="aws-ec2.png" alt="AWS EC2" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="godaddy.png" alt="GoDaddy" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="sqlite.png" alt="SQLite" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="mongodb.png" alt="MongoDB" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="elevenlabs.png" alt="ElevenLabs" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="openai.png" alt="OpenAI" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="firebase.png" alt="Firebase" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="vercel.png" alt="Vercel" class="skill-icon">
+                        </div>
+
+                        <!-- Duplicate for infinite loop -->
+                        <div class="skill-item">
+                            <img src="htmlicon.svg" alt="HTML5" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="cssicon.svg" alt="CSS3" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="JSicon.svg" alt="JavaScript" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="phpicon.svg" alt="PHP" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="mysqlicon.svg" alt="MySQL" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="pythonicon.svg" alt="Python" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="javaicon.svg" alt="Java" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="fluttericon.svg" alt="Flutter" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="figmaicon.svg" alt="Figma" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="vscode.png" alt="VS Code" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="csharp.png" alt="C#" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="angular.jpg" alt="Angular" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="vite.webp" alt="Vite" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="react-logo-1.png" alt="React" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="aws-amplify.png" alt="AWS Amplify" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="postman.png" alt="Postman" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="aws-ec2.png" alt="AWS EC2" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="godaddy.png" alt="GoDaddy" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="sqlite.png" alt="SQLite" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="mongodb.png" alt="MongoDB" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="elevenlabs.png" alt="ElevenLabs" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="openai.png" alt="OpenAI" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="firebase.png" alt="Firebase" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="vercel.png" alt="Vercel" class="skill-icon">
+                        </div>
                     </div>
-                    <div class="skill-item">
-                        <img src="JSicon.svg" alt="JavaScript" class="skill-icon">
-                    </div>
-                    <div class="skill-item">
-                        <img src="phpicon.svg" alt="PHP" class="skill-icon">
-                    </div>
-                    <div class="skill-item">
-                        <img src="mysqlicon.svg" alt="MySQL" class="skill-icon">
-                    </div>
-                    <div class="skill-item">
-                        <img src="pythonicon.svg" alt="Python" class="skill-icon">
-                    </div>
-                    <div class="skill-item">
-                        <img src="javaicon.svg" alt="Java" class="skill-icon">
-                    </div>
-                    <div class="skill-item">
-                        <img src="fluttericon.svg" alt="Flutter" class="skill-icon">
-                    </div>
-                    <div class="skill-item">
-                        <img src="figmaicon.svg" alt="Figma" class="skill-icon">
-                    </div>
-                    <div class="skill-item">
-                        <img src="vscode.png" alt="VS Code" class="skill-icon">
-                    </div>
-                    <div class="skill-item">
-                        <img src="csharp.png" alt="C#" class="skill-icon">
-                    </div>
-                    <div class="skill-item">
-                        <img src="angular.jpg" alt="Angular" class="skill-icon">
-                    </div>
-                    <div class="skill-item">
-                        <img src="vite.webp" alt="Vite" class="skill-icon">
-                    </div>
-                    <div class="skill-item">
-                        <img src="react-logo-1.png" alt="React" class="skill-icon" loading="lazy" width="60" height="60">
-                    </div>
-                    <div class="skill-item">
-                        <img src="aws-amplify.png" alt="AWS Amplify" class="skill-icon">
-                    </div>
-                    <div class="skill-item">
-                        <img src="postman.png" alt="Postman" class="skill-icon">
-                    </div>
-                    <div class="skill-item">
-                        <img src="aws-ec2.png" alt="AWS EC2" class="skill-icon">
-                    </div>
-                    <div class="skill-item">
-                        <img src="godaddy.png" alt="GoDaddy" class="skill-icon">
-                    </div>
-                    <div class="skill-item">
-                        <img src="sqlite.png" alt="SQLite" class="skill-icon">
-                    </div>
-                    <div class="skill-item">
-                        <img src="mongodb.png" alt="MongoDB" class="skill-icon">
-                    </div>
-                    <div class="skill-item">
-                        <img src="elevenlabs.png" alt="ElevenLabs" class="skill-icon">
-                    </div>
-                    <div class="skill-item">
-                        <img src="openai.png" alt="OpenAI" class="skill-icon">
-                    </div>
-                    <div class="skill-item">
-                        <img src="firebase.png" alt="Firebase" class="skill-icon">
-                    </div>
-                    <div class="skill-item">
-                        <img src="vercel.png" alt="Vercel" class="skill-icon">
+                </div>
+
+                <!-- Third row: scrolls left -->
+                <div class="skills-scroll-wrapper">
+                    <div class="skills-scroll-track">
+                        <div class="skill-item">
+                            <img src="htmlicon.svg" alt="HTML5" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="cssicon.svg" alt="CSS3" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="JSicon.svg" alt="JavaScript" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="phpicon.svg" alt="PHP" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="mysqlicon.svg" alt="MySQL" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="pythonicon.svg" alt="Python" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="javaicon.svg" alt="Java" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="fluttericon.svg" alt="Flutter" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="figmaicon.svg" alt="Figma" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="vscode.png" alt="VS Code" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="csharp.png" alt="C#" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="angular.jpg" alt="Angular" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="vite.webp" alt="Vite" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="react-logo-1.png" alt="React" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="aws-amplify.png" alt="AWS Amplify" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="postman.png" alt="Postman" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="aws-ec2.png" alt="AWS EC2" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="godaddy.png" alt="GoDaddy" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="sqlite.png" alt="SQLite" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="mongodb.png" alt="MongoDB" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="elevenlabs.png" alt="ElevenLabs" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="openai.png" alt="OpenAI" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="firebase.png" alt="Firebase" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="vercel.png" alt="Vercel" class="skill-icon">
+                        </div>
+
+                        <!-- Duplicate for infinite loop -->
+                        <div class="skill-item">
+                            <img src="htmlicon.svg" alt="HTML5" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="cssicon.svg" alt="CSS3" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="JSicon.svg" alt="JavaScript" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="phpicon.svg" alt="PHP" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="mysqlicon.svg" alt="MySQL" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="pythonicon.svg" alt="Python" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="javaicon.svg" alt="Java" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="fluttericon.svg" alt="Flutter" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="figmaicon.svg" alt="Figma" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="vscode.png" alt="VS Code" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="csharp.png" alt="C#" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="angular.jpg" alt="Angular" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="vite.webp" alt="Vite" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="react-logo-1.png" alt="React" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="aws-amplify.png" alt="AWS Amplify" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="postman.png" alt="Postman" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="aws-ec2.png" alt="AWS EC2" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="godaddy.png" alt="GoDaddy" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="sqlite.png" alt="SQLite" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="mongodb.png" alt="MongoDB" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="elevenlabs.png" alt="ElevenLabs" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="openai.png" alt="OpenAI" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="firebase.png" alt="Firebase" class="skill-icon">
+                        </div>
+                        <div class="skill-item">
+                            <img src="vercel.png" alt="Vercel" class="skill-icon">
+                        </div>
                     </div>
                 </div>
             </div>
