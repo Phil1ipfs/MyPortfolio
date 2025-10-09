@@ -1151,6 +1151,28 @@ main {
     min-height: 600px;
 }
 
+@media (max-width: 768px) {
+    .certifications-content {
+        flex-direction: column;
+        min-height: auto;
+        gap: 40px;
+        padding-bottom: 60px;
+    }
+
+    .certifications-text {
+        text-align: center;
+        order: 1;
+    }
+
+    .card-swap-wrapper {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        order: 2;
+        margin-top: auto;
+    }
+}
+
 .certifications-text {
     flex: 1;
     text-align: left;
