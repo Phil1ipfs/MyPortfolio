@@ -26,6 +26,28 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
   private typewriter?: Typewriter;
   private typewriterTriggered: boolean = false;
 
+  // Certificate modal methods - exposed to template
+  openCertModal(imgSrc: string, caption: string): void {
+    const modal = document.getElementById('certModal') as HTMLElement;
+    const modalImg = document.getElementById('certModalImg') as HTMLImageElement;
+    const modalCaption = document.getElementById('certModalCaption') as HTMLElement;
+
+    if (modal && modalImg && modalCaption) {
+      modal.style.display = 'flex';
+      modalImg.src = imgSrc;
+      modalCaption.textContent = caption;
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  closeCertModal(): void {
+    const modal = document.getElementById('certModal') as HTMLElement;
+    if (modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  }
+
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
@@ -178,6 +200,9 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
       // Initialize Typewriter for About section
       this.initTypewriter();
 
+      // Initialize Certificate Modal listeners
+      this.initCertificateModal();
+
     }, 100);
   }
 
@@ -296,6 +321,31 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
     });
 
     console.log('Mobile sidebar initialized successfully');
+  }
+
+  private initCertificateModal(): void {
+    const modal = document.getElementById('certModal');
+
+    if (!modal) {
+      console.warn('Certificate modal element not found');
+      return;
+    }
+
+    // Close modal when clicking outside the image
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        this.closeCertModal();
+      }
+    });
+
+    // Close modal with ESC key
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        this.closeCertModal();
+      }
+    });
+
+    console.log('Certificate modal initialized successfully');
   }
 
   ngOnDestroy(): void {

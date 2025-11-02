@@ -150,31 +150,31 @@
                     </div>
                     <div class="card-swap-wrapper" id="cardSwapWrapper">
                         <div class="card-swap-container" id="cardSwapContainer">
-                            <div class="card">
+                            <div class="card" (click)="openCertModal('cert1.svg', 'Certification 1')">
                                 <img src="cert1.svg" alt="Certification 1" class="certification-image">
                             </div>
-                            <div class="card">
+                            <div class="card" (click)="openCertModal('cert2.svg', 'Certification 2')">
                                 <img src="cert2.svg" alt="Certification 2" class="certification-image">
                             </div>
-                            <div class="card">
+                            <div class="card" (click)="openCertModal('cert3.svg', 'Certification 3')">
                                 <img src="cert3.svg" alt="Certification 3" class="certification-image">
                             </div>
-                            <div class="card">
+                            <div class="card" (click)="openCertModal('cert4.svg', 'Certification 4')">
                                 <img src="cert4.svg" alt="Certification 4" class="certification-image">
                             </div>
-                            <div class="card">
+                            <div class="card" (click)="openCertModal('cert5.svg', 'Certification 5')">
                                 <img src="cert5.svg" alt="Certification 5" class="certification-image">
                             </div>
-                            <div class="card">
+                            <div class="card" (click)="openCertModal('cert6.svg', 'Certification 6')">
                                 <img src="cert6.svg" alt="Certification 6" class="certification-image">
                             </div>
-                            <div class="card">
+                            <div class="card" (click)="openCertModal('cert7.svg', 'Certification 7')">
                                 <img src="cert7.svg" alt="Certification 7" class="certification-image">
                             </div>
-                            <div class="card">
+                            <div class="card" (click)="openCertModal('cert8.svg', 'Certification 8')">
                                 <img src="cert8.svg" alt="Certification 8" class="certification-image">
                             </div>
-                            <div class="card">
+                            <div class="card" (click)="openCertModal('cert9.svg', 'Certification 9')">
                                 <img src="cert9.svg" alt="Certification 9" class="certification-image">
                             </div>
                         </div>
@@ -315,7 +315,6 @@
                         <p class="description">A job finding website designed for Filipino people to discover employment opportunities that fit their skills and preferences.</p>
                         <div class="tech-stack">
                             <span class="tech"><img src="javaicon.svg" alt="Java">Java</span>
-                            <span class="tech">Java GUI</span>
                         </div>
                     </footer>
                 </article>
@@ -331,7 +330,6 @@
                         <p class="description">Delightful Dough Pizzeria - A website project offering delicious pizza ordering with an engaging user experience.</p>
                         <div class="tech-stack">
                             <span class="tech"><img src="javaicon.svg" alt="Java">Java</span>
-                            <span class="tech">Java GUI</span>
                         </div>
                     </footer>
                 </article>
@@ -1155,14 +1153,21 @@
 
     </div>
 
+    <!-- Certificate Modal -->
+    <div id="certModal" class="cert-modal">
+        <span class="cert-modal-close" (click)="closeCertModal()">&times;</span>
+        <img class="cert-modal-content" id="certModalImg" alt="Certificate">
+        <div class="cert-modal-caption" id="certModalCaption"></div>
+    </div>
+
     <script>
         // Simplified sticky navigation functionality
         function toggleStickyNav() {
             const stickyNav = document.getElementById('stickyNav');
             const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-            
+
             console.log('Scroll position:', scrollPosition);
-            
+
             // Show sticky nav after scrolling 300px (simplified trigger)
             if (scrollPosition > 300) {
                 if (stickyNav) {
@@ -1179,7 +1184,7 @@
 
         // Add scroll event listener
         window.addEventListener('scroll', toggleStickyNav);
-        
+
         // Check on page load
         document.addEventListener('DOMContentLoaded', function() {
             console.log('Page loaded, checking for sticky nav element');
