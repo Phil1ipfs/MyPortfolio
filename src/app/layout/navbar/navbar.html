@@ -1,0 +1,75 @@
+<header class="navbar" [class.is-scrolled]="scrolled() || menuOpen()">
+  <nav class="navbar__inner container" aria-label="Primary">
+    <a class="navbar__logo" routerLink="/" fragment="home" (click)="closeMenu()" [attr.aria-label]="profile.firstName + ' ' + profile.lastName + ' — home'">
+      <span aria-hidden="true">{{ profile.initials }}</span>
+    </a>
+
+    <ul class="navbar__links" role="list">
+      @for (item of items; track item.id) {
+        <li>
+          <a
+            routerLink="/"
+            [fragment]="item.id"
+            class="navbar__link"
+            [class.is-active]="active() === item.id"
+            [attr.aria-current]="active() === item.id ? 'location' : null"
+          >{{ item.label }}</a>
+        </li>
+      }
+    </ul>
+
+    <div class="navbar__actions">
+      <a class="btn btn--sm navbar__cv" [href]="profile.cv" download aria-label="Download CV (PDF)">
+        <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+        <span>Download CV</span>
+      </a>
+
+      <button
+        #toggle
+        type="button"
+        class="navbar__toggle"
+        [class.is-open]="menuOpen()"
+        [attr.aria-expanded]="menuOpen()"
+        aria-controls="mobile-menu"
+        (click)="toggleMenu()"
+      >
+        <span class="visually-hidden">{{ menuOpen() ? 'Close menu' : 'Open menu' }}</span>
+        <span class="navbar__toggle-bar" aria-hidden="true"></span>
+        <span class="navbar__toggle-bar" aria-hidden="true"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile drawer (previously the mobile sidebar) -->
+  <div class="drawer-overlay" [class.is-open]="menuOpen()" (click)="closeMenu()" aria-hidden="true"></div>
+  <nav
+    #drawer
+    id="mobile-menu"
+    class="drawer"
+    [class.is-open]="menuOpen()"
+    [attr.inert]="menuOpen() ? null : ''"
+    aria-label="Mobile"
+  >
+    <ul role="list">
+      @for (item of items; track item.id; let i = $index) {
+        <li [style.--i]="i">
+          <a
+            routerLink="/"
+            [fragment]="item.id"
+            class="drawer__link"
+            [class.is-active]="active() === item.id"
+            [attr.aria-current]="active() === item.id ? 'location' : null"
+            (click)="closeMenu()"
+          >
+            <span class="drawer__index" aria-hidden="true">0{{ i + 1 }}</span>
+            {{ item.label }}
+          </a>
+        </li>
+      }
+    </ul>
+    <a class="btn btn--primary drawer__cv" [href]="profile.cv" download (click)="closeMenu()">
+      <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+      Download CV
+    </a>
+  </nav>
+</header>

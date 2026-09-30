@@ -1,0 +1,82 @@
+<section id="about" class="section about" aria-labelledby="about-title">
+  <div class="container">
+    <div class="about__grid">
+      <div class="about__main">
+        <app-section-header eyebrow="About me" title="Turning ideas into real, working products" headingId="about-title" />
+
+        <div class="about__copy" appReveal>
+          <p>
+            I'm {{ profile.firstName }} {{ profile.lastName }}, a mobile and web developer with hands-on experience in software
+            development and a background in BS Information Technology, Major in Mobile and Web Applications, at National University.
+          </p>
+          <p>
+            Most recently I worked as a {{ latestRole.role }} at {{ latestRole.org }}, turning approved design mockups into
+            pixel-accurate, responsive pages. I work well in teams, and I'm eager to keep growing my expertise and make a
+            meaningful impact in the field.
+          </p>
+        </div>
+
+        <ul class="about__strengths" role="list">
+          @for (s of strengths; track s.title; let i = $index) {
+            <li class="strength" [appReveal]="i * 70">
+              <span class="strength__icon" aria-hidden="true"><i [class]="s.icon"></i></span>
+              <div>
+                <h3 class="strength__title">{{ s.title }}</h3>
+                <p class="strength__text">{{ s.text }}</p>
+              </div>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <aside class="about__aside" aria-label="Quick facts" appReveal="120">
+        <div #card class="card profile-card">
+          <div class="profile-card__head">
+            <span class="profile-card__avatar" aria-hidden="true">{{ profile.initials }}</span>
+            <div>
+              <p class="profile-card__name">{{ profile.firstName }} {{ profile.lastName }}</p>
+              <p class="profile-card__role">{{ profile.role }}</p>
+            </div>
+          </div>
+
+          <dl class="profile-card__facts">
+            <div>
+              <dt><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Based in</dt>
+              <dd>{{ profile.location }}</dd>
+            </div>
+            <div>
+              <dt><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Education</dt>
+              <dd>BS Information Technology · {{ education.school }}</dd>
+            </div>
+            <div>
+              <dt><i class="fa-solid fa-briefcase" aria-hidden="true"></i> Latest role</dt>
+              <dd>{{ latestRole.role }} · {{ latestRole.org }}</dd>
+            </div>
+            <div>
+              <dt><i class="fa-solid fa-code" aria-hidden="true"></i> Focus</dt>
+              <dd>Mobile & web applications</dd>
+            </div>
+          </dl>
+
+          <div class="profile-card__links">
+            <a class="btn btn--sm" [href]="profile.github" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
+            </a>
+            <a class="btn btn--sm" [href]="profile.linkedin" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i> LinkedIn
+            </a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <ul class="about__stats" role="list">
+      @for (stat of stats; track stat.label; let i = $index) {
+        <li class="card stat" [appReveal]="i * 80">
+          <span class="stat__value">{{ stat.value }}</span>
+          <span class="stat__label">{{ stat.label }}</span>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

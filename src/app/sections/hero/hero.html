@@ -1,0 +1,85 @@
+<section id="home" class="hero" aria-labelledby="hero-title">
+  <div class="container hero__grid">
+    <div class="hero__content">
+      <p class="eyebrow hero__fade" style="--d: 0ms">Hi, I'm</p>
+
+      <h1 id="hero-title" class="hero__title">
+        <span class="hero__title-line" style="--d: 80ms">{{ profile.firstName }}</span>
+        <span class="hero__title-line" style="--d: 200ms"><span class="text-gradient">{{ profile.lastName }}</span></span>
+      </h1>
+
+      <p class="hero__role hero__fade" style="--d: 250ms">{{ profile.role }}</p>
+      <p class="hero__intro hero__fade" style="--d: 350ms">{{ profile.intro }}</p>
+
+      <div class="hero__ctas hero__fade" style="--d: 450ms">
+        <a class="btn btn--primary" routerLink="/" fragment="projects">
+          View my work
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </a>
+        <a class="btn" [href]="profile.cv" download>
+          <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+          Download CV
+        </a>
+      </div>
+
+      <div class="hero__stack hero__fade" style="--d: 550ms">
+        <p class="hero__stack-label">Technologies I use most</p>
+        <ul class="hero__stack-list" role="list">
+          @for (t of tech; track t.name) {
+            <li class="hero__stack-item">
+              <span class="hero__stack-icon" aria-hidden="true">
+                @switch (t.svg) {
+                  @case ('flutter') {
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.31 1.5 3.75 12.06l3.27 3.27L20.85 1.5h-6.54Zm-.04 9.66-5.65 5.66 5.65 5.68h6.55l-5.66-5.68 5.66-5.66h-6.55Z" /></svg>
+                  }
+                  @case ('mongodb') {
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.2 1.5c-.08.42-.3.72-.57 1.04C9.6 4.93 6.9 7.9 6.9 12.53c0 4.53 3.03 7.43 4.62 8.5l.3 1.47h.82l.25-1.47c1.58-1.07 4.21-3.85 4.21-8.34 0-4.9-2.9-8.13-4.9-11.19Zm.18 18.54-.36-.28V4.9l.18-.03.18.02v14.87l-.18.28Z" /></svg>
+                  }
+                  @default {
+                    <i [class]="t.fa"></i>
+                  }
+                }
+              </span>
+              <span class="hero__stack-name">{{ t.name }}</span>
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="hero__visual hero__fade" style="--d: 150ms">
+      <div class="portrait">
+        <div class="portrait__glow" aria-hidden="true"></div>
+        <div class="portrait__frame">
+          <div class="portrait__monogram" aria-hidden="true">
+            <span>{{ profile.initials }}</span>
+          </div>
+          <img
+            class="portrait__img"
+            [class.is-loaded]="portraitLoaded()"
+            [src]="profile.portrait"
+            [alt]="portraitLoaded() ? 'Portrait of ' + profile.firstName + ' ' + profile.lastName : ''"
+            width="622"
+            height="772"
+            fetchpriority="high"
+            decoding="async"
+            (load)="portraitLoaded.set(true)"
+          />
+        </div>
+        <p class="portrait__badge portrait__badge--top">
+          <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+          {{ profile.location }}
+        </p>
+        <p class="portrait__badge portrait__badge--bottom">
+          <span class="portrait__dot" aria-hidden="true"></span>
+          Mobile · Web · Full stack
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <a class="hero__scroll" routerLink="/" fragment="about">
+    <span class="hero__mouse" aria-hidden="true"></span>
+    Scroll to explore
+  </a>
+</section>

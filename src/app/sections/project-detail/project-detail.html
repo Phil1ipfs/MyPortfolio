@@ -1,0 +1,174 @@
+@let p = project();
+<div #panel class="detail" role="region" [attr.aria-labelledby]="'detail-title-' + p.slug" [style.--accent-card]="p.accent">
+  <article class="container detail__inner">
+    <div class="detail__bar">
+      <button type="button" class="detail__back" (click)="close()">
+        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+        Back to projects
+      </button>
+      <span class="detail__pos" aria-hidden="true">{{ position() }} / {{ total }}</span>
+    </div>
+
+    <!-- Header -->
+    <header class="detail__header">
+      <div class="detail__intro">
+        <p class="eyebrow">{{ cs() ? 'Case study' : 'Project' }} · {{ p.categories.join(' · ') }}</p>
+        <h1 #heading class="detail__title" [id]="'detail-title-' + p.slug" tabindex="-1">{{ p.name }}</h1>
+        <p class="detail__tagline">{{ p.tagline }}</p>
+        <ul class="chip-list" aria-label="Technologies">
+          @for (t of p.technologies; track t) {
+            <li class="chip">{{ t }}</li>
+          }
+        </ul>
+        <div class="detail__links">
+          @if (p.liveUrl) {
+            <a class="btn btn--primary" [href]="p.liveUrl" target="_blank" rel="noopener noreferrer">
+              <i [class]="p.liveLabel === 'Google Play' ? 'fa-brands fa-google-play' : 'fa-solid fa-arrow-up-right-from-square'" aria-hidden="true"></i>
+              {{ p.liveLabel ?? 'Live demo' }}
+            </a>
+          }
+          @if (p.repos?.length) {
+            @for (repo of p.repos; track repo.url) {
+              <a class="btn" [href]="repo.url" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github" aria-hidden="true"></i>
+                {{ p.repos!.length > 1 || repo.label !== 'GitHub' ? 'GitHub · ' + repo.label : 'Source on GitHub' }}
+              </a>
+            }
+          } @else {
+            <a class="btn" [href]="profile.github" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-github" aria-hidden="true"></i> More on GitHub
+            </a>
+          }
+        </div>
+      </div>
+
+      <figure class="detail__media" [class.is-contain]="p.imageFit === 'contain'" [class.is-bare]="p.imageBare && !p.video">
+        @if (p.video) {
+          <video [src]="p.video" [attr.poster]="p.image ?? null" controls playsinline preload="none" [attr.aria-label]="p.name + ' demo video'"></video>
+        } @else if (p.image) {
+          <img [src]="p.image" [alt]="p.name + ' screenshot'" decoding="async" />
+        } @else {
+          <div class="detail__cover" aria-hidden="true">
+            <span>{{ p.name }}</span>
+          </div>
+        }
+      </figure>
+    </header>
+
+    <!-- Body -->
+    <div class="detail__body">
+      <div class="detail__main">
+        <section class="detail__block" aria-labelledby="d-overview">
+          <h2 id="d-overview">Overview</h2>
+          <p>{{ p.overview }}</p>
+        </section>
+
+        @if (cs()?.problem; as problem) {
+          <section class="detail__block" aria-labelledby="d-problem">
+            <h2 id="d-problem">Problem</h2>
+            <p>{{ problem }}</p>
+          </section>
+        }
+
+        @if (cs()?.solution; as solution) {
+          <section class="detail__block" aria-labelledby="d-solution">
+            <h2 id="d-solution">Solution</h2>
+            <p>{{ solution }}</p>
+          </section>
+        }
+
+        @if (cs()?.features?.length) {
+          <section class="detail__block" aria-labelledby="d-features">
+            <h2 id="d-features">Key features</h2>
+            <ul class="detail__features" role="list">
+              @for (f of cs()!.features!; track f) {
+                <li><i class="fa-solid fa-check" aria-hidden="true"></i>{{ f }}</li>
+              }
+            </ul>
+          </section>
+        }
+
+        @if (cs()?.architecture?.length) {
+          <section class="detail__block" aria-labelledby="d-arch">
+            <h2 id="d-arch">Architecture</h2>
+            <ol class="arch" role="list">
+              @for (layer of cs()!.architecture!; track layer.layer; let last = $last) {
+                <li class="arch__layer">
+                  <span class="arch__name">{{ layer.layer }}</span>
+                  <ul class="chip-list" role="list">
+                    @for (item of layer.items; track item) {
+                      <li class="chip">{{ item }}</li>
+                    }
+                  </ul>
+                </li>
+                @if (!last) {
+                  <li class="arch__link" aria-hidden="true"><i class="fa-solid fa-arrows-up-down"></i></li>
+                }
+              }
+            </ol>
+          </section>
+        }
+      </div>
+
+      <aside class="detail__aside">
+        @if (cs()?.role?.length) {
+          <section class="card detail__side" aria-labelledby="d-role">
+            <h2 id="d-role">My role</h2>
+            <ul class="detail__role" role="list">
+              @for (r of cs()!.role!; track r) {
+                <li>{{ r }}</li>
+              }
+            </ul>
+          </section>
+        }
+
+        <section class="card detail__side" aria-labelledby="d-tech">
+          <h2 id="d-tech">Technologies</h2>
+          <ul class="chip-list" role="list">
+            @for (t of p.technologies; track t) {
+              <li class="chip">{{ t }}</li>
+            }
+          </ul>
+        </section>
+
+        @if (cs()?.outcome; as outcome) {
+          <section class="card detail__side detail__side--outcome" aria-labelledby="d-outcome">
+            <h2 id="d-outcome">Outcome</h2>
+            <p>{{ outcome }}</p>
+          </section>
+        }
+      </aside>
+    </div>
+
+    <!-- Preview gallery (only when the project has one) -->
+    @if (screenshots().length) {
+      <section class="gallery" aria-labelledby="d-gallery">
+        <h2 id="d-gallery" class="gallery__title">Preview</h2>
+        <ul class="gallery__grid" role="list">
+          @for (shot of screenshots(); track shot.src; let i = $index) {
+            <li>
+              <figure class="gallery__figure">
+                <button type="button" class="gallery__item" (click)="openScreenshot(i)" [attr.aria-label]="'View larger: ' + shot.caption">
+                  <img [src]="shot.src" [alt]="shot.caption" loading="lazy" decoding="async" />
+                  <span class="gallery__zoom" aria-hidden="true"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                </button>
+                <figcaption class="gallery__caption">{{ shot.caption }}</figcaption>
+              </figure>
+            </li>
+          }
+        </ul>
+      </section>
+    }
+
+    <!-- Footer nav -->
+    <footer class="detail__footer">
+      <button type="button" class="btn" (click)="close()">
+        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> All projects
+      </button>
+      <a class="detail__next" routerLink="/" [queryParams]="{ project: next().slug }">
+        <span class="detail__next-label">Next project</span>
+        <span class="detail__next-name">{{ next().name }} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+      </a>
+    </footer>
+  </article>
+</div>

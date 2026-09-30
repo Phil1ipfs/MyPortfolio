@@ -1,0 +1,112 @@
+<section id="experience" class="section xp" aria-labelledby="xp-title">
+  <div class="container">
+    <app-section-header
+      eyebrow="Experience & education"
+      title="Where I've built and learned"
+      headingId="xp-title"
+    />
+
+    <div class="xp__grid">
+      <!-- Left column: work + education -->
+      <div class="xp__col">
+        <section class="card xp__panel" aria-labelledby="xp-work" appReveal>
+          <h3 class="xp__panel-title" id="xp-work">
+            <i class="fa-solid fa-briefcase" aria-hidden="true"></i> Experience
+          </h3>
+          <ol class="timeline" role="list">
+            @for (job of experience; track job.org) {
+              <li class="timeline__item">
+                <div class="timeline__head">
+                  <div>
+                    <p class="timeline__title">{{ job.role }}</p>
+                    <p class="timeline__org">{{ job.org }}</p>
+                  </div>
+                  <p class="timeline__date">{{ job.period }}</p>
+                </div>
+                <ul class="timeline__points" role="list">
+                  @for (point of job.points; track point) {
+                    <li>{{ point }}</li>
+                  }
+                </ul>
+              </li>
+            }
+          </ol>
+        </section>
+
+        <section class="card xp__panel" aria-labelledby="xp-edu" appReveal="80">
+          <h3 class="xp__panel-title" id="xp-edu">
+            <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Education
+          </h3>
+          <ol class="timeline" role="list">
+            <li class="timeline__item">
+              <div class="timeline__head">
+                <div>
+                  <p class="timeline__title">{{ education.degree }}</p>
+                  <p class="timeline__org">{{ education.major }}</p>
+                  <p class="timeline__org">{{ education.school }}</p>
+                </div>
+                <p class="timeline__date">{{ education.period }}</p>
+              </div>
+            </li>
+          </ol>
+        </section>
+      </div>
+
+      <!-- Right column: community + events -->
+      <div class="xp__col">
+        <section class="card xp__panel" aria-labelledby="xp-orgs" appReveal="120">
+          <h3 class="xp__panel-title" id="xp-orgs">
+            <i class="fa-solid fa-people-group" aria-hidden="true"></i> Leadership & community
+          </h3>
+          <ol class="timeline timeline--compact" role="list">
+            @for (org of organizations; track org.role + org.org) {
+              <li class="timeline__item">
+                <div class="timeline__head">
+                  <div>
+                    <p class="timeline__title">{{ org.role }}</p>
+                    <p class="timeline__org">{{ org.org }}</p>
+                  </div>
+                  @if (org.certificate) {
+                    <button type="button" class="xp__cert" (click)="certViewer.open(org.certificate, org.role + ' — ' + org.org)">
+                      <i class="fa-regular fa-file-lines" aria-hidden="true"></i>
+                      Certificate<span class="visually-hidden">: {{ org.org }}</span>
+                    </button>
+                  }
+                </div>
+              </li>
+            }
+          </ol>
+        </section>
+
+        <section class="card xp__panel" aria-labelledby="xp-events" appReveal="180">
+          <h3 class="xp__panel-title" id="xp-events">
+            <i class="fa-solid fa-trophy" aria-hidden="true"></i> Hackathons & events
+          </h3>
+          <ol class="timeline timeline--compact" role="list">
+            @for (ev of events; track ev.title) {
+              <li class="timeline__item">
+                <div class="timeline__head">
+                  <div>
+                    <p class="timeline__title">{{ ev.title }}</p>
+                    <p class="timeline__org">{{ ev.org }} · {{ ev.date }}</p>
+                  </div>
+                  @if (ev.certificate) {
+                    <button type="button" class="xp__cert" (click)="certViewer.open(ev.certificate, ev.title + ' — ' + ev.org)">
+                      <i class="fa-regular fa-file-lines" aria-hidden="true"></i>
+                      Certificate<span class="visually-hidden">: {{ ev.title }}</span>
+                    </button>
+                  } @else if (ev.photo) {
+                    <button type="button" class="xp__cert" (click)="certViewer.open(ev.photo, ev.title + ' — ' + ev.org)">
+                      <i class="fa-regular fa-image" aria-hidden="true"></i>
+                      Photo<span class="visually-hidden">: {{ ev.title }}</span>
+                    </button>
+                  }
+                </div>
+              </li>
+            }
+          </ol>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>

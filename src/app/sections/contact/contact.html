@@ -1,0 +1,67 @@
+<section id="contact" class="section contact" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="contact__grid">
+      <div class="contact__info">
+        <app-section-header
+          eyebrow="Let's work together"
+          title="Get in touch"
+          headingId="contact-title"
+          lead="I'm open to new opportunities and collaborations. Send a message and I'll get back to you."
+        />
+
+        <ul class="channels" role="list">
+          @for (c of channels; track c.label; let i = $index) {
+            <li [appReveal]="i * 60">
+              <a
+                class="channel"
+                [href]="c.href"
+                [attr.target]="c.external ? '_blank' : null"
+                [attr.rel]="c.external ? 'noopener noreferrer' : null"
+              >
+                <span class="channel__icon" aria-hidden="true"><i [class]="c.icon"></i></span>
+                <span class="channel__text">
+                  <span class="channel__label">{{ c.label }}</span>
+                  <span class="channel__value">{{ c.value }}</span>
+                </span>
+                <i class="fa-solid fa-arrow-right channel__arrow" aria-hidden="true"></i>
+              </a>
+            </li>
+          }
+        </ul>
+
+        <a class="btn contact__cv" [href]="profile.cv" download appReveal="200">
+          <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+          Download CV (PDF)
+        </a>
+      </div>
+
+      <form class="card form" [class.was-submitted]="submitted()" (submit)="onSubmit($event)" novalidate appReveal="120" aria-labelledby="form-title">
+        <h3 id="form-title" class="form__title">Send a message</h3>
+
+        <div class="field">
+          <label for="cf-name">Name</label>
+          <input id="cf-name" name="name" type="text" autocomplete="name" required maxlength="100" placeholder="Your name" />
+        </div>
+
+        <div class="field">
+          <label for="cf-email">Email</label>
+          <input id="cf-email" name="email" type="email" autocomplete="email" required maxlength="150" placeholder="you@example.com" />
+        </div>
+
+        <div class="field">
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" name="message" rows="5" required minlength="10" maxlength="2000" placeholder="Tell me about your project or opportunity…"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary form__submit">
+          Send message
+          <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+        </button>
+
+        <p class="form__note" role="status" aria-live="polite">
+          {{ status() || 'Opens your email app with the message pre-filled.' }}
+        </p>
+      </form>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,52 @@
+<section id="projects" class="section projects" aria-labelledby="projects-title">
+  <div class="container">
+    <app-section-header
+      eyebrow="Selected work"
+      title="Projects I've built and designed"
+      headingId="projects-title"
+      lead="Mobile apps, full-stack web systems and product design — from capstone research to client-facing websites."
+    />
+
+    <!-- Featured -->
+    <div class="featured">
+      <app-project-card class="featured__lead" [project]="lead" variant="wide" appReveal />
+      @for (p of featured; track p.slug; let i = $index) {
+        <app-project-card class="featured__pair" [project]="p" variant="featured" [appReveal]="80 + i * 80" />
+      }
+      @for (p of showcase; track p.slug; let i = $index) {
+        <app-project-card class="featured__showcase" [project]="p" variant="featured" [appReveal]="(i % 3) * 80" />
+      }
+    </div>
+
+    <!-- More projects -->
+    <div class="more">
+      <div class="more__head" appReveal>
+        <h3 class="more__title">More projects</h3>
+        <div class="filters" role="group" aria-label="Filter projects by category">
+          @for (f of filters; track f) {
+            @if (countFor(f) > 0) {
+              <button
+                type="button"
+                class="filters__btn"
+                [class.is-active]="filter() === f"
+                [attr.aria-pressed]="filter() === f"
+                (click)="filter.set(f)"
+              >
+                {{ f }}
+                <span class="filters__count" aria-hidden="true">{{ countFor(f) }}</span>
+              </button>
+            }
+          }
+        </div>
+      </div>
+
+      <p class="visually-hidden" aria-live="polite">Showing {{ filtered().length }} {{ filter() === 'All' ? '' : filter() }} projects</p>
+
+      <div class="grid">
+        @for (p of filtered(); track p.slug) {
+          <app-project-card class="grid__item" [project]="p" />
+        }
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,41 @@
+<section id="certifications" class="section certs" aria-labelledby="certs-title">
+  <div class="container">
+    <app-section-header
+      eyebrow="Certifications & training"
+      title="Continuous learning"
+      headingId="certs-title"
+      lead="Courses I've completed to keep my skills current — from API design and React to databases and security."
+    />
+
+    <ul id="cert-list" class="certs__grid" role="list">
+      @for (c of visible(); track c.title; let i = $index) {
+        <li class="cert" [appReveal]="(i % 6) * 50">
+          <span class="cert__icon" aria-hidden="true"><i [class]="icons[c.topic]"></i></span>
+          <div class="cert__body">
+            <p class="cert__title">{{ c.title }}</p>
+            <p class="cert__meta">
+              @if (c.issuer) {
+                {{ c.issuer }} ·
+              }
+              {{ c.date }}
+            </p>
+          </div>
+          @if (c.image) {
+            <button type="button" class="cert__view" (click)="certViewer.open(c.image, c.title)" [attr.aria-label]="'View certificate: ' + c.title">
+              <i class="fa-regular fa-eye" aria-hidden="true"></i>
+            </button>
+          }
+        </li>
+      }
+    </ul>
+
+    @if (total > visible().length || expanded()) {
+      <div class="certs__more">
+        <button type="button" class="btn btn--sm" [attr.aria-expanded]="expanded()" aria-controls="cert-list" (click)="expanded.set(!expanded())">
+          {{ expanded() ? 'Show fewer' : 'View all ' + total + ' certifications' }}
+          <i class="fa-solid" [class.fa-chevron-down]="!expanded()" [class.fa-chevron-up]="expanded()" aria-hidden="true"></i>
+        </button>
+      </div>
+    }
+  </div>
+</section>

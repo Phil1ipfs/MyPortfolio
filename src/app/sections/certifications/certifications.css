@@ -1,0 +1,91 @@
+/* Deliberately compact: this section supports the story, it doesn't lead it. */
+.certs {
+    padding-block: clamp(64px, 8vw, 96px);
+}
+
+.certs__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    list-style: none;
+}
+
+.cert {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.02);
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.cert:hover {
+    border-color: var(--border-strong);
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.cert__icon {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    border: 1px solid var(--border);
+    color: var(--accent-strong);
+    font-size: 0.8rem;
+}
+
+.cert__body {
+    flex: 1;
+    min-width: 0;
+}
+
+.cert__title {
+    font-size: 0.88rem;
+    font-weight: 550;
+    line-height: 1.4;
+}
+
+.cert__meta {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    margin-top: 2px;
+}
+
+.cert__view {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    color: var(--text-muted);
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.cert__view:hover {
+    color: #fff;
+    background: var(--accent);
+}
+
+.certs__more {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+@media (max-width: 960px) {
+    .certs__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .certs__grid {
+        grid-template-columns: 1fr;
+    }
+}

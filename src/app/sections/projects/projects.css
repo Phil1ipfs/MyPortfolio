@@ -1,0 +1,148 @@
+/* ---------- Featured ---------- */
+
+/* 6-column track: lead (full) → 2 featured → showcase rows of 2 then 3. */
+.featured {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.featured__lead {
+    grid-column: 1 / -1;
+}
+
+.featured__pair,
+.featured__showcase {
+    grid-column: span 3;
+}
+
+/* Children: lead (1), pair (2–3), showcase (4–8) → the last three showcase cards sit three to a row. */
+.featured__showcase:nth-child(n + 6) {
+    grid-column: span 2;
+}
+
+/* ---------- More projects ---------- */
+
+.more {
+    margin-top: clamp(56px, 8vw, 88px);
+}
+
+.more__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.more__title {
+    font-size: 1.35rem;
+    font-weight: 650;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 4px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.filters__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 36px;
+    padding: 0 14px;
+    border-radius: 9px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 550;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.filters__btn:hover {
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.filters__btn.is-active {
+    color: #fff;
+    background: var(--accent);
+    box-shadow: 0 6px 18px -8px var(--accent-glow);
+}
+
+.filters__count {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
+
+.grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.grid__item {
+    animation: card-in 0.45s var(--ease-out) both;
+}
+
+@keyframes card-in {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 10px, 0);
+    }
+}
+
+/*
+ * Focus effect: while a card is hovered, the other cards step back slightly.
+ * Applied per card (not as an overlay layer), so gaps and edges stay clean.
+ */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .grid > .grid__item {
+        transition: opacity 0.3s ease, filter 0.3s ease;
+    }
+
+    .grid:has(> .grid__item:hover) > .grid__item:not(:hover) {
+        opacity: 0.72;
+        filter: saturate(0.6);
+    }
+}
+
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* Tablet: showcase cards go two per row. */
+    .featured__showcase:nth-child(n + 6) {
+        grid-column: span 3;
+    }
+}
+
+@media (max-width: 720px) {
+    .featured,
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .featured > * {
+        grid-column: 1 / -1 !important;
+    }
+
+    .filters {
+        width: 100%;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        scrollbar-width: none;
+    }
+
+    .filters__btn {
+        flex: none;
+    }
+}

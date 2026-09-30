@@ -1,0 +1,39 @@
+<section id="chatbot-panel" class="panel" role="dialog" aria-labelledby="chatbot-title" aria-describedby="chatbot-subtitle">
+  <header class="panel__header">
+    <span class="panel__avatar" aria-hidden="true">
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+    </span>
+    <div class="panel__titles">
+      <h2 id="chatbot-title" class="panel__title">Phillip's Portfolio Assistant</h2>
+      <p id="chatbot-subtitle" class="panel__subtitle">Ask me about my projects, skills, and experience.</p>
+    </div>
+    <button type="button" class="panel__close" aria-label="Close portfolio assistant" (click)="closed.emit()">
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>
+  </header>
+
+  <div #scroller class="panel__body" role="log" aria-live="polite" aria-relevant="additions" aria-label="Conversation">
+    @for (m of messages(); track m.id) {
+      <app-chat-message [message]="m" (navigate)="navigated.emit()" />
+    }
+
+    @if (loading()) {
+      <div class="typing" role="status">
+        <span class="typing__avatar" aria-hidden="true">JC</span>
+        <span class="typing__dots" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="visually-hidden">Assistant is typing…</span>
+      </div>
+    }
+
+    @if (!loading() && suggestions().length) {
+      <app-suggested-questions
+        [questions]="suggestions()"
+        [label]="hasAsked() ? 'You could also ask' : 'Try asking'"
+        (pick)="ask($event)"
+      />
+    }
+  </div>
+
+  <app-chat-input [busy]="loading()" (send)="ask($event)" />
+  <p class="panel__note">Answers come only from Phillip's resume and portfolio.</p>
+</section>

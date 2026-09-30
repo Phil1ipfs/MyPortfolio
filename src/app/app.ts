@@ -1,380 +1,68 @@
-import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
-import { LiquidEtherFull } from './liquid-ether-full';
-import { ProfileCard } from './profile-card';
-import { BlurText } from './blur-text';
-import { LanyardDrag } from './lanyard-drag';
-import { ProfileCardTilt } from './profile-card-tilt';
-import { CardSwap } from './card-swap';
-import { ChromaGrid } from './chroma-grid';
-import { Typewriter } from './typewriter';
+import { Component, ElementRef, OnDestroy, afterNextRender, inject, viewChild } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import type { LiquidEtherFull } from './liquid-ether-full';
+import { PROFILE } from './data/portfolio.data';
+import { Navbar } from './layout/navbar/navbar';
+import { CertViewer } from './shared/cert-viewer';
+import { Chatbot } from './chatbot/chatbot';
+import { prefersReducedMotion, prefersSaveData } from './shared/motion';
 
 @Component({
   selector: 'app-root',
+  imports: [RouterOutlet, RouterLink, Navbar, CertViewer, Chatbot],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
-export class App implements OnInit, AfterViewInit, OnDestroy {
-  protected title = 'phillip-portfolio';
+export class App implements OnDestroy {
+  protected readonly profile = PROFILE;
+  protected readonly year = new Date().getFullYear();
+
+  private readonly background = viewChild.required<ElementRef<HTMLElement>>('liquidEther');
   private liquidEther?: LiquidEtherFull;
-  private profileCard?: ProfileCard;
-  private blurTextDeveloper?: BlurText;
-  private blurTextDesigner?: BlurText;
-  private lanyardDrag?: LanyardDrag;
-  private profileCardTilt?: ProfileCardTilt;
-  private cardSwap?: CardSwap;
-  private chromaGrid?: ChromaGrid;
-  private typewriter?: Typewriter;
-  private typewriterTriggered: boolean = false;
 
-  // Certificate modal methods - exposed to template
-  openCertModal(imgSrc: string, caption: string): void {
-    const modal = document.getElementById('certModal') as HTMLElement;
-    const modalImg = document.getElementById('certModalImg') as HTMLImageElement;
-    const modalCaption = document.getElementById('certModalCaption') as HTMLElement;
+  constructor() {
+    // Anchor links land below the fixed navbar.
+    inject(ViewportScroller).setOffset(() => [0, 72]);
 
-    if (modal && modalImg && modalCaption) {
-      modal.style.display = 'flex';
-      modalImg.src = imgSrc;
-      modalCaption.textContent = caption;
-      document.body.style.overflow = 'hidden';
-    }
-  }
+    afterNextRender(() => {
+      if (prefersReducedMotion() || prefersSaveData()) return;
 
-  closeCertModal(): void {
-    const modal = document.getElementById('certModal') as HTMLElement;
-    if (modal) {
-      modal.style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-  }
-
-  ngOnInit(): void {}
-
-  ngAfterViewInit(): void {
-    // Initialize Liquid Ether on the background element
-    setTimeout(() => {
-      const container = document.getElementById('liquidEther');
-      console.log('Container found:', container);
-      if (container) {
-        try {
-          this.liquidEther = new LiquidEtherFull(container, {
-            colors: ['#5227FF', '#FF9FFC', '#B19EEF'],
-            mouseForce: 30,
-            cursorSize: 80,
-            isViscous: false,
-            viscous: 30,
-            iterationsViscous: 32,
-            iterationsPoisson: 32,
-            resolution: 0.5,
-            isBounce: false,
+      // Three.js is ~500 kB — load the liquid background after first paint, off the critical path.
+      const start = () =>
+        import('./liquid-ether-full').then(({ LiquidEtherFull }) => {
+          const isSmall = window.innerWidth < 768;
+          this.liquidEther = new LiquidEtherFull(this.background().nativeElement, {
+            colors: ['#2a1f8f', '#5b4dff', '#2f6bff'],
+            mouseForce: 18,
+            cursorSize: 90,
+            resolution: isSmall ? 0.25 : 0.4,
+            iterationsPoisson: isSmall ? 16 : 24,
+            iterationsViscous: 16,
             autoDemo: true,
-            autoSpeed: 0.5,
-            autoIntensity: 1.5,
+            autoSpeed: 0.35,
+            autoIntensity: 1.6,
             takeoverDuration: 0.25,
-            autoResumeDelay: 2000,
-            autoRampDuration: 0.6
+            autoResumeDelay: 2500,
+            autoRampDuration: 0.8
           });
-          console.log('LiquidEther initialized successfully');
-        } catch (error) {
-          console.error('Error initializing LiquidEther:', error);
-        }
-      } else {
-        console.error('Container #liquidEther not found');
-      }
-
-      // Initialize ProfileCardTilt for About section card rotation
-      const aboutImageContainer = document.querySelector('.about-image-container') as HTMLElement;
-      if (aboutImageContainer) {
-        try {
-          this.profileCardTilt = new ProfileCardTilt(aboutImageContainer, {
-            enableTilt: true,
-            maxTilt: 70
-          });
-          console.log('ProfileCardTilt initialized successfully');
-        } catch (error) {
-          console.error('Error initializing ProfileCardTilt:', error);
-        }
-      }
-
-      // Initialize BlurText for DEVELOPER text
-      const developerText = document.querySelector('.title-developer-text') as HTMLElement;
-      if (developerText) {
-        try {
-          this.blurTextDeveloper = new BlurText(developerText, {
-            text: 'DEVELOPER',
-            delay: 100,
-            animateBy: 'letters',
-            direction: 'top',
-            stepDuration: 0.4,
-            onAnimationComplete: () => console.log('Developer animation complete')
-          });
-          console.log('BlurText Developer initialized successfully');
-        } catch (error) {
-          console.error('Error initializing BlurText Developer:', error);
-        }
-      }
-
-      // Initialize BlurText for DESIGNER text
-      const designerText = document.querySelector('.title-designer-text') as HTMLElement;
-      if (designerText) {
-        try {
-          this.blurTextDesigner = new BlurText(designerText, {
-            text: 'DESIGNER',
-            delay: 120,
-            animateBy: 'letters',
-            direction: 'bottom',
-            stepDuration: 0.4,
-            onAnimationComplete: () => console.log('Designer animation complete')
-          });
-          console.log('BlurText Designer initialized successfully');
-        } catch (error) {
-          console.error('Error initializing BlurText Designer:', error);
-        }
-      }
-
-      // Initialize Lanyard Drag
-      const lanyardCard = document.querySelector('.lanyard-card') as HTMLElement;
-      console.log('Lanyard card element found:', lanyardCard);
-      if (lanyardCard) {
-        try {
-          this.lanyardDrag = new LanyardDrag(lanyardCard, {
-            friction: 0.92,
-            gravity: 0.15,
-            maxRotation: 30,
-            springStrength: 0.1,
-            bounceStrength: 0.5,
-            stretchFactor: 0.65,
-            dragRotationFactor: 0.2,
-            flipSpeed: 0.18
-          });
-          console.log('Lanyard drag initialized successfully');
-        } catch (error) {
-          console.error('Error initializing Lanyard drag:', error);
-        }
-      } else {
-        console.error('Lanyard card element not found!');
-      }
-
-      // Initialize Mobile Sidebar
-      this.initMobileSidebar();
-
-      // Initialize Scroll Fade Animation
-      this.initScrollFadeAnimation();
-
-      // Initialize Card Swap for Certifications
-      const cardSwapContainer = document.getElementById('cardSwapContainer');
-      if (cardSwapContainer) {
-        try {
-          this.cardSwap = new CardSwap(cardSwapContainer, {
-            cardDistance: 60,
-            verticalDistance: 70,
-            delay: 5000,
-            pauseOnHover: true,
-            skewAmount: 6,
-            easing: 'elastic'
-          });
-          console.log('CardSwap initialized successfully');
-        } catch (error) {
-          console.error('Error initializing CardSwap:', error);
-        }
-      }
-
-      // Initialize Chroma Grid for Projects
-      const chromaGridContainer = document.getElementById('chromaGrid');
-      if (chromaGridContainer) {
-        try {
-          this.chromaGrid = new ChromaGrid(chromaGridContainer, {
-            radius: 300,
-            columns: 3,
-            rows: 2,
-            damping: 0.45,
-            fadeOut: 0.6,
-            ease: 'power3.out'
-          });
-          console.log('ChromaGrid initialized successfully');
-        } catch (error) {
-          console.error('Error initializing ChromaGrid:', error);
-        }
-      }
-
-      // Initialize Typewriter for About section
-      this.initTypewriter();
-
-      // Initialize Certificate Modal listeners
-      this.initCertificateModal();
-
-    }, 100);
-  }
-
-  private initTypewriter(): void {
-    const typewriterElement = document.getElementById('aboutTypewriter');
-    if (!typewriterElement) return;
-
-    this.typewriter = new Typewriter(typewriterElement, {
-      speed: 30,
-      delay: 500,
-      cursor: true
-    });
-
-    // Create Intersection Observer to trigger typewriter on scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !this.typewriterTriggered) {
-          this.typewriterTriggered = true;
-          if (this.typewriter) {
-            this.typewriter.start();
-          }
-        }
-      });
-    }, {
-      threshold: 0.3
-    });
-
-    const aboutSection = document.getElementById('about');
-    if (aboutSection) {
-      observer.observe(aboutSection);
-    }
-  }
-
-  private initScrollFadeAnimation(): void {
-    const sections = document.querySelectorAll('section, .profile-section, .title-section');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in-visible');
-        }
-      });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
-    });
-
-    sections.forEach(section => {
-      section.classList.add('fade-in-scroll');
-      observer.observe(section);
-    });
-
-    // Staggered fade-in for "What I Do" project items (desktop only)
-    const isMobile = window.innerWidth <= 768;
-    if (!isMobile) {
-      const projectItems = document.querySelectorAll('.project-item');
-      const projectObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-          if (entry.isIntersecting) {
-            setTimeout(() => {
-              entry.target.classList.add('fade-in-visible');
-            }, index * 150);
-          }
+          this.background().nativeElement.classList.add('is-ready');
         });
-      }, {
-        threshold: 0.05,
-        rootMargin: '0px 0px 50px 0px'
-      });
 
-      projectItems.forEach((item) => {
-        item.classList.add('fade-in-scroll');
-        projectObserver.observe(item);
-      });
-    }
-  }
-
-  private initMobileSidebar(): void {
-    const menuToggle = document.getElementById('mobileMenuToggle');
-    const sidebar = document.getElementById('mobileSidebar');
-    const sidebarClose = document.getElementById('mobileSidebarClose');
-    const sidebarOverlay = document.getElementById('mobileSidebarOverlay');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-
-    if (!menuToggle || !sidebar || !sidebarClose || !sidebarOverlay) {
-      console.warn('Mobile sidebar elements not found');
-      return;
-    }
-
-    // Open sidebar
-    menuToggle.addEventListener('click', () => {
-      menuToggle.classList.add('active');
-      sidebar.classList.add('active');
-      sidebarOverlay.classList.add('active');
-      document.body.style.overflow = 'hidden'; // Prevent scrolling when sidebar is open
-    });
-
-    // Close sidebar function
-    const closeSidebar = () => {
-      menuToggle.classList.remove('active');
-      sidebar.classList.remove('active');
-      sidebarOverlay.classList.remove('active');
-      document.body.style.overflow = ''; // Re-enable scrolling
-    };
-
-    // Close sidebar when clicking close button
-    sidebarClose.addEventListener('click', closeSidebar);
-
-    // Close sidebar when clicking overlay
-    sidebarOverlay.addEventListener('click', closeSidebar);
-
-    // Close sidebar when clicking any navigation link
-    mobileNavLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        setTimeout(closeSidebar, 300); // Small delay for smooth transition
-      });
-    });
-
-    console.log('Mobile sidebar initialized successfully');
-  }
-
-  private initCertificateModal(): void {
-    const modal = document.getElementById('certModal');
-
-    if (!modal) {
-      console.warn('Certificate modal element not found');
-      return;
-    }
-
-    // Close modal when clicking outside the image
-    modal.addEventListener('click', (event) => {
-      if (event.target === modal) {
-        this.closeCertModal();
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(start, { timeout: 2000 });
+      } else {
+        setTimeout(start, 600);
       }
     });
+  }
 
-    // Close modal with ESC key
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
-        this.closeCertModal();
-      }
-    });
-
-    console.log('Certificate modal initialized successfully');
+  protected skipToMain(event: Event): void {
+    event.preventDefault();
+    document.getElementById('main')?.focus();
   }
 
   ngOnDestroy(): void {
-    if (this.liquidEther) {
-      this.liquidEther.dispose();
-    }
-    if (this.profileCard) {
-      this.profileCard.dispose();
-    }
-    if (this.blurTextDeveloper) {
-      this.blurTextDeveloper.dispose();
-    }
-    if (this.blurTextDesigner) {
-      this.blurTextDesigner.dispose();
-    }
-    if (this.lanyardDrag) {
-      this.lanyardDrag.dispose();
-    }
-    if (this.profileCardTilt) {
-      this.profileCardTilt.dispose();
-    }
-    if (this.cardSwap) {
-      this.cardSwap.dispose();
-    }
-    if (this.chromaGrid) {
-      this.chromaGrid.dispose();
-    }
-    if (this.typewriter) {
-      this.typewriter.dispose();
-    }
+    this.liquidEther?.dispose();
   }
 }

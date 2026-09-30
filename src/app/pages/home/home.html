@@ -1,0 +1,18 @@
+<!-- The page stays mounted (and keeps its scroll position) while a case study is open. -->
+<div [inert]="!!activeProject()">
+  <app-hero />
+  <app-about />
+  <app-projects />
+  <app-tech-stack />
+  <app-experience />
+  <app-certifications />
+  <app-contact />
+</div>
+
+@if (activeProject(); as p) {
+  @defer (on immediate) {
+    <app-project-detail [project]="p" />
+  } @loading (minimum 150ms) {
+    <div class="detail-loading" role="status">Loading project…</div>
+  }
+}

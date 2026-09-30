@@ -37,24 +37,27 @@ This is a personal portfolio website for Phillip Casingal, built with Angular 20
 
 ### Application Structure
 - **Entry Point**: `src/main.ts` - Bootstraps standalone `App` component
-- **Root Component**: `src/app/app.ts` - Uses separate template/style files (`app.html`, `app.css`)
-- **Configuration**: `src/app/app.config.ts` - Provides router, zoneless change detection, and global error listeners
-- **Routing**: `src/app/app.routes.ts` - Currently empty, single-page application with anchor navigation
+- **App shell**: `src/app/app.ts` (+ `app.html`, `app.css`) - ambient background (lazy-loaded LiquidEther WebGL), navbar, `<router-outlet>`, footer, certificate viewer
+- **Configuration**: `src/app/app.config.ts` - zoneless change detection, router with component input binding and anchor scrolling
+- **Routing**: `src/app/app.routes.ts` - single `Home` route. Case studies open on the same route via `/?project=<slug>` (no server rewrites needed on Vercel)
+- **Content**: `src/app/data/portfolio.data.ts` - single source of truth for profile, projects, tech stack, experience and certifications. Only add facts backed by the CV or certificates.
 
-### Key Implementation Details
-- **Component Pattern**: Uses standalone components (no NgModule)
-- **Template/Style Separation**: Root component uses external HTML template (`app.html`) and CSS (`app.css`), not inline
-- **Navigation**: Implements both sticky top nav and bottom nav with anchor links (#home, #about, #contact, #projects)
-- **Sections**: Home, About Me, Certifications, What I Do (projects), Skills, Contact Me
-- **Assets**: Profile images, project screenshots, skill icons, and CV stored in `public/` directory
+### Folders
+- `layout/navbar` - top nav + mobile drawer, active-section highlight
+- `pages/home` - composes the sections, scroll-spy, renders `ProjectDetail` via `@defer`
+- `sections/*` - hero, about, projects, project-detail, tech-stack, experience, certifications, contact
+- `shared/*` - `ProjectCard`, `SectionHeader`, `RevealDirective`, `CertViewer` (native `<dialog>`), `ActiveSectionService`, motion helpers
+
+### Effects
+- Vanilla effect classes live in `src/app/*.ts` (`liquid-ether-full`, `chroma-grid`, `profile-card-tilt`, plus currently unused `blur-text`, `typewriter`, `card-swap`, `lanyard-drag`, `profile-card`)
+- Heavy ones are dynamically imported (Three.js, GSAP) and skipped under `prefers-reduced-motion`; pointer effects only on hover-capable devices
 
 ### Styling Approach
-- Single main stylesheet (`src/styles.css`) for global styles
-- Component-specific styles in `app.css`
-- Uses Font Awesome 6.4.0 for icons (loaded via CDN)
-- Implements sticky navigation with scroll-based visibility toggle
+- Design tokens (colors, radii, spacing, fonts) and shared primitives (`.btn`, `.chip`, `.card`, `.eyebrow`, `.reveal`) in `src/styles.css`
+- Component styles live next to each component
+- Inter + JetBrains Mono (Google Fonts) and Font Awesome 6.4.0 (CDN), both loaded in `src/index.html`
 
-### Important Notes
-- The HTML template (`app.html`) contains a full document structure including `<html>`, `<head>`, and `<body>` tags, which is unconventional for an Angular component template. This may need refactoring to follow Angular best practices.
-- Application uses inline JavaScript in the template for sticky navigation functionality - consider moving to TypeScript component logic.
-- No routing is configured despite having `provideRouter()` - all navigation is anchor-based within single page.
+### Assets
+- `public/projects/*.jpg` and `public/certs/*.jpg` are optimized JPEGs extracted from the original SVG exports (originals kept in `public/`)
+- `public/profile-portrait.jpg` is the hero portrait slot; a monogram shows until it exists
+- CV served from `public/Casingal_John_Phillip_CV.pdf`

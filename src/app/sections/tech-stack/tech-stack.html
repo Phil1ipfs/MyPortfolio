@@ -1,0 +1,43 @@
+<section id="tech-stack" class="section stack" aria-labelledby="stack-title">
+  <div class="container">
+    <app-section-header
+      eyebrow="Technologies I work with"
+      title="I work across the stack"
+      headingId="stack-title"
+      lead="From frontend interfaces to backend APIs, databases and cloud deployment — the tools I use to take a product from design to production."
+    />
+
+    <ul class="stack__grid" role="list">
+      @for (cat of categories; track cat.title; let i = $index) {
+        <li class="card stack__card" [appReveal]="i * 70">
+          <div class="stack__head">
+            <span class="stack__icon" aria-hidden="true"><i [class]="cat.icon"></i></span>
+            <h3 class="stack__title">{{ cat.title }}</h3>
+          </div>
+          <ul class="stack__items" role="list">
+            @for (item of cat.items; track item) {
+              <li>{{ item }}</li>
+            }
+          </ul>
+        </li>
+      }
+    </ul>
+
+    <!-- Kept from the previous marquee, now a single lightweight text row. -->
+    <div class="tools" appReveal>
+      <p class="tools__label" id="tools-label">Also worked with</p>
+      <div class="tools__marquee" role="region" aria-labelledby="tools-label" tabindex="0">
+        <ul class="tools__track" role="list">
+          @for (t of tools; track t) {
+            <li class="chip">{{ t }}</li>
+          }
+        </ul>
+        <ul class="tools__track" role="list" aria-hidden="true">
+          @for (t of tools; track t) {
+            <li class="chip">{{ t }}</li>
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

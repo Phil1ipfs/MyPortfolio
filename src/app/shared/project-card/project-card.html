@@ -1,0 +1,37 @@
+@let p = project();
+<article class="pcard" [attr.aria-labelledby]="'project-' + p.slug">
+  <div class="pcard__media" [class.is-contain]="p.imageFit === 'contain'">
+    @if (p.image) {
+      <img [src]="p.image" alt="" loading="lazy" decoding="async" width="960" height="600" />
+    } @else {
+      <!-- No screenshot yet: branded cover instead of a stock image -->
+      <div class="pcard__cover" aria-hidden="true">
+        <span class="pcard__cover-name">{{ p.name }}</span>
+        <span class="pcard__cover-tag">{{ p.categories.join(' · ') }}</span>
+      </div>
+    }
+    @if (p.featured) {
+      <span class="pcard__badge">Featured</span>
+    }
+  </div>
+
+  <div class="pcard__body">
+    <p class="pcard__category">{{ p.tagline }}</p>
+    <h3 class="pcard__title" [id]="'project-' + p.slug">{{ p.name }}</h3>
+    <p class="pcard__summary">{{ p.summary }}</p>
+
+    <ul class="chip-list pcard__tech" aria-label="Technologies">
+      @for (t of visibleTech(); track t) {
+        <li class="chip">{{ t }}</li>
+      }
+      @if (hiddenTechCount() > 0) {
+        <li class="chip">+{{ hiddenTechCount() }}</li>
+      }
+    </ul>
+
+    <a class="pcard__cta" routerLink="/" [queryParams]="{ project: p.slug }">
+      {{ ctaLabel() }}<span class="visually-hidden">: {{ p.name }}</span>
+      <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+    </a>
+  </div>
+</article>
