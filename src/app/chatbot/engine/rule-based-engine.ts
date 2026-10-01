@@ -167,7 +167,9 @@ const PROJECT_ALIASES: Record<string, string[]> = {
   ecodex: ['ecodex', 'eco dex', 'plant identification'],
   amber: ['amber'],
   'photo-booth': ['photo booth', 'photobooth'],
-  'resource-management-sim': ['resource management', 'simulation game', 'unity game', '3d game', 'game'],
+  'resource-management-sim': ['resource management', 'simulation game'],
+  ecoguardian: ['ecoguardian', 'eco guardian', 'third-person', 'third person'],
+  'fruit-slasher': ['fruit slasher', 'fruit', 'slasher', 'slash', 'clicky crates', 'arcade'],
   'story-book-app': ['story book', 'storybook'],
   'nu-learn': ['nu-learn', 'nu learn', 'e-learning', 'elearning'],
   afkar: ['afkar'],
@@ -431,7 +433,7 @@ export class RuleBasedChatEngine implements ChatEngine {
     const asksAboutTech = /\b(experience (with|in)|know|knows|familiar|use|uses|used|using|work(ed|s)? with|skilled|proficient|built with|made with|which projects|what projects)\b/.test(q);
 
     // "Which projects use Flutter?" / "Does he know React?" → technology answer.
-    if (techs.length && (asksAboutTech || !projects.length)) return techReply(techs, /^ (which|what) /.test(q));
+    if (techs.length && (asksAboutTech || !projects.length)) return techReply(techs, !/^ (does|do|did|has|have|is|are|can|could) /.test(q));
     if (projects.length) return multiProjectReply(projects);
 
     // Asked about a specific technology we have no record of.

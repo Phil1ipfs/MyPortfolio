@@ -41,3 +41,6 @@ testem.log
 .DS_Store
 Thumbs.db
 .vercel
+
+# Raw recordings (too large for GitHub; processed copies live in public/projects)
+/public/3D unity video sample project/

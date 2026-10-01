@@ -306,6 +306,41 @@ export const PROJECTS: Project[] = [
     }
   },
   {
+    slug: 'ecoguardian',
+    name: 'EcoGuardian',
+    tagline: '3D third-person game built in Unity',
+    categories: ['Game'],
+    summary: 'A 3D third-person game where the player explores an outdoor village environment, built in Unity with C#.',
+    overview:
+      'EcoGuardian is a 3D third-person game built in Unity with C#. The player controls a character exploring an outdoor village environment with a cabin, grassy hills and forest. The gameplay video shows the character moving through the world in play mode.',
+    technologies: ['Unity', 'C#'],
+    image: 'projects/ecoguardian.jpg',
+    video: 'projects/ecoguardian.mp4',
+    accent: '#22c55e',
+    date: 'Sep 2024'
+  },
+  {
+    slug: 'fruit-slasher',
+    name: 'Fruit Slasher',
+    tagline: 'Click-to-slash arcade game built in Unity',
+    categories: ['Game'],
+    summary: 'An arcade game where objects are tossed into the play area and the player clicks to slash them for points, built in Unity with C#.',
+    overview:
+      'Fruit Slasher is an arcade game built in Unity with C#. After choosing a difficulty (Easy, Medium or Hard) on the title screen, objects are launched into the play area and the player clicks to slash them, with the score updating live.',
+    technologies: ['Unity', 'C#'],
+    image: 'projects/fruit-slasher.jpg',
+    video: 'projects/fruit-slasher.mp4',
+    accent: '#f97316',
+    caseStudy: {
+      features: [
+        'Title screen with Easy, Medium and Hard difficulty',
+        'Objects spawn and are launched into the play area',
+        'Click to slash objects, with particle effects',
+        'Live score counter'
+      ]
+    }
+  },
+  {
     slug: 'story-book-app',
     name: 'Story Book App',
     tagline: 'Android story book app',
