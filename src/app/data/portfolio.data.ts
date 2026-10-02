@@ -170,7 +170,8 @@ export const PROJECTS: Project[] = [
     name: 'Pinkventory',
     tagline: 'Inventory management system',
     categories: ['Web', 'Full Stack'],
-    summary: 'A user-friendly inventory tracking system for businesses with real-time updates and analytics.',
+    summary:
+      'A full-stack inventory management and e-commerce web application built with vanilla PHP and MySQL (LAMP stack), with role-based admin and customer portals, transactional order processing, and a responsive custom UI.',
     overview:
       'Designed and developed a user-friendly inventory tracking system for businesses. Implemented real-time updates and analytics for efficient stock management, with performance and security improved through optimized backend solutions.',
     technologies: ['PHP', 'MySQL', 'JavaScript', 'HTML5', 'CSS3', 'Figma'],
