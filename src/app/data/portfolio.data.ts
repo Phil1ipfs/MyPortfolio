@@ -254,18 +254,17 @@ export const PROJECTS: Project[] = [
     repos: [{ label: 'Figma design', url: GH + 'Ecodex_DESIGN' }]
   },
   {
-    slug: 'amber',
-    name: 'Amber Website',
-    tagline: 'Modernized website for a Filipino cuisine brand',
-    categories: ['Web', 'Design'],
-    summary: "A redesign of Amber's website that modernizes its look and improves the user experience.",
+    slug: 'reusify',
+    name: 'Reusify',
+    tagline: 'Sustainable e-commerce platform',
+    categories: ['Mobile', 'Design'],
+    summary: 'An e-commerce concept connecting consumers with upcycled and reusable products.',
     overview:
-      "Redesigned Amber's website to enhance user experience and modernize its visual appeal — bold red-and-yellow branding, a hero showcasing Filipino dishes, a clear ordering call-to-action and intuitive navigation.",
-    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Figma'],
-    image: 'projects/amber.jpg',
-    accent: '#f59e0b',
-    date: 'Jun 2025',
-    repos: [{ label: 'Website code', url: GH + 'AMBER' }, { label: 'UI design', url: GH + 'AMBERS_UI_DESIGN' }]
+      'A sustainable e-commerce platform that promotes eco-friendly shopping by connecting consumers with upcycled and reusable products.',
+    technologies: ['Figma'],
+    image: 'projects/reusify.jpg',
+    imageFit: 'contain',
+    accent: '#ec4899'
   },
   {
     slug: 'photo-booth',
@@ -382,18 +381,19 @@ export const PROJECTS: Project[] = [
     repos: [{ label: 'Figma design', url: GH + 'AFKAR_RE-DESIGN' }]
   },
   {
-    slug: 'reusify',
+    slug: 'amber',
     showcase: true,
-    name: 'Reusify',
-    tagline: 'Sustainable e-commerce platform',
-    categories: ['Mobile', 'Design'],
-    summary: 'An e-commerce concept connecting consumers with upcycled and reusable products.',
+    name: 'Amber Website',
+    tagline: 'Modernized website for a Filipino cuisine brand',
+    categories: ['Web', 'Design'],
+    summary: "A redesign of Amber's website that modernizes its look and improves the user experience.",
     overview:
-      'A sustainable e-commerce platform that promotes eco-friendly shopping by connecting consumers with upcycled and reusable products.',
-    technologies: ['Figma'],
-    image: 'projects/reusify.jpg',
-    imageFit: 'contain',
-    accent: '#ec4899'
+      "Redesigned Amber's website to enhance user experience and modernize its visual appeal — bold red-and-yellow branding, a hero showcasing Filipino dishes, a clear ordering call-to-action and intuitive navigation.",
+    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Figma'],
+    image: 'projects/amber.jpg',
+    accent: '#f59e0b',
+    date: 'Jun 2025',
+    repos: [{ label: 'Website code', url: GH + 'AMBER' }, { label: 'UI design', url: GH + 'AMBERS_UI_DESIGN' }]
   },
   {
     slug: 'everyjuana',
