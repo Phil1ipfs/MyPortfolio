@@ -178,7 +178,7 @@ export const PROJECTS: Project[] = [
     accent: '#ec4899',
     featured: true,
     date: 'Feb 2025',
-    liveUrl: 'https://pinkventorys.vercel.app',
+    liveUrl: 'https://pinkventory.free.je/index.php',
     repos: [{ label: 'GitHub', url: GH + 'Pinkventorys' }]
   },
   {
