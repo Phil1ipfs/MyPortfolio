@@ -159,7 +159,7 @@ export const PROJECTS: Project[] = [
     overview:
       'A redesign of NU Bulldogz Exchange, the one-stop online shop for official National University uniforms and merchandise, built with the MERN stack — MongoDB, Express.js, React and Node.js. The storefront includes shop, uniform and merchandise sections, product search, a cart, and account sign-in and registration.',
     technologies: ['MongoDB', 'Express.js', 'React', 'Node.js'],
-    image: 'projects/bulldogexchange.jpg',
+    image: 'projects/bulldogexchange.png',
     accent: '#3b82f6',
     featured: true,
     liveUrl: 'https://casingal-nu-bulldog-exchange-web.vercel.app/',
