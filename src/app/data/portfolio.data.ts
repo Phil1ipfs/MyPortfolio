@@ -461,7 +461,7 @@ export const EXPERIENCE = [
   {
     role: 'Frontend Developer',
     org: 'Easy Bus PH',
-    period: 'Nov 2025 – Apr 2026',
+    period: 'Sep 2025 – Sep 2026',
     points: [
       'Built and maintained WordPress websites, translating approved design mockups into pixel-accurate, responsive pages with Elementor',
       "Customized page sections and interactive components with custom CSS where Elementor's built-in controls fell short",
