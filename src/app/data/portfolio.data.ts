@@ -175,7 +175,7 @@ export const PROJECTS: Project[] = [
     overview:
       'Designed and developed a user-friendly inventory tracking system for businesses. Implemented real-time updates and analytics for efficient stock management, with performance and security improved through optimized backend solutions.',
     technologies: ['PHP', 'MySQL', 'JavaScript', 'HTML5', 'CSS3', 'Figma'],
-    image: 'projects/pinkventory.jpg',
+    image: 'projects/pinkventory.png',
     accent: '#ec4899',
     featured: true,
     date: 'Feb 2025',
