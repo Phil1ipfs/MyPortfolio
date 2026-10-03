@@ -274,6 +274,7 @@ export const PROJECTS: Project[] = [
     summary: 'A React web app developed for a photo booth experience.',
     overview: 'A web application developed for a photo booth experience, built with React and CSS and designed in Figma.',
     technologies: ['React', 'CSS3', 'Figma'],
+    image: 'projects/photobooth.png',
     accent: '#06b6d4',
     liveUrl: 'https://photobooth-seven-sooty.vercel.app/',
     repos: [{ label: 'GitHub', url: GH + 'photobooth' }]
