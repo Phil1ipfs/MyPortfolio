@@ -267,17 +267,17 @@ export const PROJECTS: Project[] = [
     accent: '#ec4899'
   },
   {
-    slug: 'photo-booth',
-    name: 'Photo Booth Website',
-    tagline: 'Web app for a photo booth experience',
-    categories: ['Web'],
-    summary: 'A React web app developed for a photo booth experience.',
-    overview: 'A web application developed for a photo booth experience, built with React and CSS and designed in Figma.',
-    technologies: ['React', 'CSS3', 'Figma'],
-    image: 'projects/photobooth.png',
-    accent: '#06b6d4',
-    liveUrl: 'https://photobooth-seven-sooty.vercel.app/',
-    repos: [{ label: 'GitHub', url: GH + 'photobooth' }]
+    slug: 'nu-learn',
+    name: 'NU-Learn',
+    tagline: 'E-learning platform landing page',
+    categories: ['Design'],
+    summary: 'A minimal landing page design for an online learning platform.',
+    overview:
+      'A sleek landing page design for NU-Learn, an online learning platform — a soft, minimal palette with blue calls-to-action, a search bar and explore menu, and 3D-style illustrations for a welcoming feel.',
+    technologies: ['Figma'],
+    image: 'projects/elearning.jpg',
+    repos: [{ label: 'Figma design', url: GH + 'E-LEARNING-DESIGN' }],
+    accent: '#f59e0b'
   },
   {
     slug: 'resource-management-sim',
@@ -354,18 +354,18 @@ export const PROJECTS: Project[] = [
   },
   // Projects from the previous portfolio, showcased under the featured ones.
   {
-    slug: 'nu-learn',
+    slug: 'photo-booth',
     showcase: true,
-    name: 'NU-Learn',
-    tagline: 'E-learning platform landing page',
-    categories: ['Design'],
-    summary: 'A minimal landing page design for an online learning platform.',
-    overview:
-      'A sleek landing page design for NU-Learn, an online learning platform — a soft, minimal palette with blue calls-to-action, a search bar and explore menu, and 3D-style illustrations for a welcoming feel.',
-    technologies: ['Figma'],
-    image: 'projects/elearning.jpg',
-    repos: [{ label: 'Figma design', url: GH + 'E-LEARNING-DESIGN' }],
-    accent: '#f59e0b'
+    name: 'Photo Booth Website',
+    tagline: 'Web app for a photo booth experience',
+    categories: ['Web'],
+    summary: 'A React web app developed for a photo booth experience.',
+    overview: 'A web application developed for a photo booth experience, built with React and CSS and designed in Figma.',
+    technologies: ['React', 'CSS3', 'Figma'],
+    image: 'projects/photobooth.png',
+    accent: '#06b6d4',
+    liveUrl: 'https://photobooth-seven-sooty.vercel.app/',
+    repos: [{ label: 'GitHub', url: GH + 'photobooth' }]
   },
   {
     slug: 'afkar',
