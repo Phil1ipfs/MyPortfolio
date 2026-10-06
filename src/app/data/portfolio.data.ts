@@ -368,20 +368,6 @@ export const PROJECTS: Project[] = [
     repos: [{ label: 'GitHub', url: GH + 'photobooth' }]
   },
   {
-    slug: 'afkar',
-    showcase: true,
-    name: 'AFKAR',
-    tagline: 'Renewable energy website redesign',
-    categories: ['Design'],
-    summary: 'A clean, modern redesign for a renewable energy company.',
-    overview:
-      'A modern, clean redesign for a renewable energy company, using vibrant sustainability colors, a structured sticky navigation, and data-driven visuals.',
-    technologies: ['Figma'],
-    image: 'projects/afkar.jpg',
-    accent: '#ef4444',
-    repos: [{ label: 'Figma design', url: GH + 'AFKAR_RE-DESIGN' }]
-  },
-  {
     slug: 'amber',
     showcase: true,
     name: 'Amber Website',
@@ -395,6 +381,20 @@ export const PROJECTS: Project[] = [
     accent: '#f59e0b',
     date: 'Jun 2025',
     repos: [{ label: 'Website code', url: GH + 'AMBER' }, { label: 'UI design', url: GH + 'AMBERS_UI_DESIGN' }]
+  },
+  {
+    slug: 'afkar',
+    showcase: true,
+    name: 'AFKAR',
+    tagline: 'Renewable energy website redesign',
+    categories: ['Design'],
+    summary: 'A clean, modern redesign for a renewable energy company.',
+    overview:
+      'A modern, clean redesign for a renewable energy company, using vibrant sustainability colors, a structured sticky navigation, and data-driven visuals.',
+    technologies: ['Figma'],
+    image: 'projects/afkar.jpg',
+    accent: '#ef4444',
+    repos: [{ label: 'Figma design', url: GH + 'AFKAR_RE-DESIGN' }]
   },
   {
     slug: 'everyjuana',
