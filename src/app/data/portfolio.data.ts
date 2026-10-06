@@ -117,7 +117,7 @@ export const PROJECTS: Project[] = [
       { src: 'projects/literexia3.png', caption: 'Mobile app — audio letter-matching exercise' },
       { src: 'projects/literexia4.png', caption: 'Mobile app — accessibility settings: text-to-speech, font, reading speed, text size and letter spacing' }
     ],
-    // TODO: add liveUrl when available.
+    liveUrl: 'https://literexia-web-eta.vercel.app/',
     caseStudy: {
       problem:
         'Text-heavy learning material is a barrier for many students with dyslexia, and teachers need a clear way to assess them and follow their progress. Literexia connects both sides.',
