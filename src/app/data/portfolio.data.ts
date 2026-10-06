@@ -391,7 +391,7 @@ export const PROJECTS: Project[] = [
     overview:
       "Redesigned Amber's website to enhance user experience and modernize its visual appeal — bold red-and-yellow branding, a hero showcasing Filipino dishes, a clear ordering call-to-action and intuitive navigation.",
     technologies: ['HTML5', 'CSS3', 'JavaScript', 'Figma'],
-    image: 'projects/amber.jpg',
+    image: 'projects/amber.png',
     accent: '#f59e0b',
     date: 'Jun 2025',
     repos: [{ label: 'Website code', url: GH + 'AMBER' }, { label: 'UI design', url: GH + 'AMBERS_UI_DESIGN' }]
