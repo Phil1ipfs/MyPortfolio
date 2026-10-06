@@ -383,6 +383,7 @@ export const PROJECTS: Project[] = [
     imagePosition: 'center top',
     accent: '#f59e0b',
     date: 'Jun 2025',
+    liveUrl: 'https://amber-ivory.vercel.app/',
     repos: [{ label: 'Website code', url: GH + 'AMBER' }, { label: 'UI design', url: GH + 'AMBERS_UI_DESIGN' }]
   },
   {
