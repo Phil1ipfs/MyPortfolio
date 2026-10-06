@@ -2,7 +2,7 @@
 <article class="pcard" [attr.aria-labelledby]="'project-' + p.slug">
   <div class="pcard__media" [class.is-contain]="p.imageFit === 'contain'">
     @if (p.image) {
-      <img [src]="p.image" alt="" loading="lazy" decoding="async" width="960" height="600" />
+      <img [src]="p.image" [style.object-position]="p.imagePosition" alt="" loading="lazy" decoding="async" width="960" height="600" />
     } @else {
       <!-- No screenshot yet: branded cover instead of a stock image -->
       <div class="pcard__cover" aria-hidden="true">

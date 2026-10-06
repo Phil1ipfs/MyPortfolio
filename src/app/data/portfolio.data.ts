@@ -72,6 +72,8 @@ export interface Project {
   video?: string;
   /** Portrait phone mockups look better contained than cropped. */
   imageFit?: 'cover' | 'contain';
+  /** CSS object-position for a cropped cover (default 'left top') — for screenshots with off-centre content. */
+  imagePosition?: string;
   /** Show the cover without the case-study frame (border, background, shadow) — for logos. */
   imageBare?: boolean;
   accent: string;
@@ -378,6 +380,7 @@ export const PROJECTS: Project[] = [
       "Redesigned Amber's website to enhance user experience and modernize its visual appeal — bold red-and-yellow branding, a hero showcasing Filipino dishes, a clear ordering call-to-action and intuitive navigation.",
     technologies: ['HTML5', 'CSS3', 'JavaScript', 'Figma'],
     image: 'projects/amber.png',
+    imagePosition: 'center top',
     accent: '#f59e0b',
     date: 'Jun 2025',
     repos: [{ label: 'Website code', url: GH + 'AMBER' }, { label: 'UI design', url: GH + 'AMBERS_UI_DESIGN' }]
