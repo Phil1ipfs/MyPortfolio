@@ -3,6 +3,53 @@
     padding-block: clamp(64px, 8vw, 96px);
 }
 
+.badges {
+    margin-bottom: 28px;
+}
+
+.badges__label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-bottom: 14px;
+}
+
+.badges__label i {
+    color: var(--accent-strong);
+    margin-right: 6px;
+}
+
+.badges__row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    list-style: none;
+}
+
+/* Credly renders a white card; frame it so it sits in the dark theme. */
+.badge {
+    width: 150px;
+    height: 270px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #fff;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.badge:hover {
+    border-color: var(--border-strong);
+    transform: translateY(-2px);
+}
+
+.badge iframe {
+    display: block;
+    width: 150px;
+    height: 270px;
+    border: 0;
+}
+
 .certs__grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));

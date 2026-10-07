@@ -1,5 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { CERTIFICATIONS, CERT_TOPIC_ICONS } from '../../data/portfolio.data';
+import { DomSanitizer } from '@angular/platform-browser';
+import { CERTIFICATIONS, CERT_TOPIC_ICONS, CREDLY_BADGES } from '../../data/portfolio.data';
 import { CertViewerService } from '../../shared/cert-viewer';
 import { RevealDirective } from '../../shared/reveal.directive';
 import { SectionHeader } from '../../shared/section-header';
@@ -18,4 +19,11 @@ export class Certifications {
   protected readonly expanded = signal(false);
   protected readonly visible = computed(() => (this.expanded() ? CERTIFICATIONS : CERTIFICATIONS.slice(0, INITIAL_COUNT)));
   protected readonly certViewer = inject(CertViewerService);
+
+  /** Same iframe Credly's embed.js would inject, without loading the script. */
+  private readonly sanitizer = inject(DomSanitizer);
+  protected readonly badges = CREDLY_BADGES.map(id => ({
+    id,
+    src: this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.credly.com/embedded_badge/${id}`)
+  }));
 }
