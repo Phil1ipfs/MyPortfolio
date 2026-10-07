@@ -525,14 +525,15 @@ export type CertTopic = 'Web & APIs' | 'Data' | 'Security' | 'UX';
 
 export interface Certification { title: string; issuer?: string; date: string; topic: CertTopic; image?: string; }
 
-/** Fortinet badges verified on Credly (share-badge ids from the Credly embed code). */
+/** Badges verified on Credly (Fortinet, Unity), by share-badge id from the Credly embed code. */
 export const CREDLY_BADGES: string[] = [
   '52c456b6-0563-412c-b7a2-e8d86b595e6a',
   '7667a7b6-d688-4a5f-9a6b-f8b67da4e816',
   'bcf360f3-0d05-456a-b7c5-4b2e01e9384f',
   '1736c5d7-81dd-4ed2-bf61-42ed22e6a291',
   'c292ca74-7327-4fbb-98af-bfccc245fbe1',
-  'a84d3093-f22b-4f7d-a502-a86ba0f41bbb'
+  'a84d3093-f22b-4f7d-a502-a86ba0f41bbb',
+  '5ab18dd0-c2f7-4e12-9e12-1249ddfb2253'
 ];
 
 export const CERT_TOPIC_ICONS: Record<CertTopic, string> = {

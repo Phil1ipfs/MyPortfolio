@@ -8,11 +8,11 @@
     />
 
     <div class="badges" [appReveal]="0">
-      <p class="badges__label"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Fortinet badges · verified on Credly</p>
+      <p class="badges__label"><i class="fa-solid fa-certificate" aria-hidden="true"></i> Badges · verified on Credly</p>
       <ul class="badges__row" role="list">
         @for (b of badges; track b.id) {
           <li class="badge">
-            <iframe [src]="b.src" width="150" height="270" loading="lazy" scrolling="no" title="Fortinet badge — view verified achievement on Credly"></iframe>
+            <iframe [src]="b.src" width="150" height="270" loading="lazy" scrolling="no" title="View verified achievement on Credly"></iframe>
           </li>
         }
       </ul>
