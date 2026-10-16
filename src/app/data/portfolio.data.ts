@@ -477,17 +477,49 @@ export const PROJECTS: Project[] = [
 export interface TechCategory { title: string; icon: string; items: string[]; }
 
 export const TECH_STACK: TechCategory[] = [
-  { title: 'Frontend', icon: 'fa-solid fa-code', items: ['React', 'Angular', 'TypeScript', 'HTML', 'CSS', 'Tailwind'] },
-  { title: 'Backend', icon: 'fa-solid fa-server', items: ['Node.js', 'Express.js', 'REST APIs', 'Authentication', 'CRUD'] },
-  { title: 'Database', icon: 'fa-solid fa-database', items: ['MongoDB', 'PostgreSQL', 'MySQL', 'SQLite', 'Supabase'] },
-  { title: 'Deployment & Cloud', icon: 'fa-solid fa-cloud', items: ['AWS', 'AWS S3', 'AWS EC2', 'AWS Amplify', 'Vercel', 'Docker'] },
-  { title: 'Mobile, Design & Tools', icon: 'fa-solid fa-screwdriver-wrench', items: ['Flutter', 'WordPress', 'Elementor', 'Figma', 'Git'] }
+  { title: 'Languages', icon: 'fa-solid fa-terminal', items: ['JavaScript', 'TypeScript', 'Python', 'Dart', 'Kotlin', 'PHP', 'Luau', 'SQL', 'HTML & CSS'] },
+  {
+    title: 'Frontend',
+    icon: 'fa-solid fa-code',
+    items: ['React', 'Angular', 'Vite', 'Tailwind CSS', 'Bootstrap', 'Angular Material', 'Radix UI', 'React Router', 'Zustand', 'RxJS']
+  },
+  { title: 'Mobile & Desktop', icon: 'fa-solid fa-mobile-screen', items: ['Flutter', 'React Native', 'Expo', 'Jetpack Compose', 'Android Studio', 'Electron'] },
+  {
+    title: 'Backend & APIs',
+    icon: 'fa-solid fa-server',
+    items: ['Node.js', 'Express.js', 'FastAPI', 'REST APIs', 'Socket.IO', 'WebSockets', 'JWT', 'Passport.js', 'Supabase Auth']
+  },
+  {
+    title: 'Databases & Storage',
+    icon: 'fa-solid fa-database',
+    items: ['MongoDB', 'PostgreSQL', 'Supabase', 'MySQL', 'SQLite', 'Redis', 'AWS S3', 'Backblaze B2']
+  },
+  {
+    title: 'AI & ML',
+    icon: 'fa-solid fa-brain',
+    items: ['OpenAI API', 'Claude API', 'Google Gemini', 'Groq', 'Ollama', 'Whisper', 'ElevenLabs', 'TensorFlow.js']
+  },
+  {
+    title: 'Testing & Quality',
+    icon: 'fa-solid fa-vial-circle-check',
+    items: ['Vitest', 'Jest', 'React Testing Library', 'Playwright', 'pytest', 'Karma & Jasmine', 'Espresso', 'ESLint', 'Zod']
+  },
+  {
+    title: 'Cloud & DevOps',
+    icon: 'fa-solid fa-cloud',
+    items: ['Vercel', 'Render', 'Cloudflare Workers', 'AWS EC2', 'AWS Amplify', 'Docker', 'Git']
+  },
+  {
+    title: 'Design, CMS & Games',
+    icon: 'fa-solid fa-pen-ruler',
+    items: ['Figma', 'WordPress', 'Elementor', 'Adobe Illustrator', 'Blender', 'Unity', 'Roblox Studio']
+  }
 ];
 
-/** Secondary tools from the CV, shown in the "also worked with" strip. */
+/** Libraries and integrations from my projects, shown in the "also worked with" strip. */
 export const OTHER_TOOLS: string[] = [
-  'JavaScript', 'Java', 'Python', 'PHP', 'C#', 'C++', 'Kotlin', 'OpenAI API', 'ElevenLabs',
-  'Postman', 'VS Code', 'Android Studio', 'Adobe Illustrator', 'Blender', 'Unity', 'Claude'
+  'GSAP', 'three.js', 'Chart.js', 'Recharts', 'PayMongo', 'PayPal', 'Google Maps API', 'Telegram Bot API',
+  'Messenger bots', 'Nodemailer', 'jsPDF', 'pdfmake', 'ExcelJS', 'n8n', 'Rojo', 'Postman', 'VS Code'
 ];
 
 export interface HeroTech { name: string; fa?: string; svg?: 'flutter' | 'mongodb'; }
