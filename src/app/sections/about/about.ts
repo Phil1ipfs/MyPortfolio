@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnDestroy, afterNextRender, viewChild } from '@angular/core';
-import { CERTIFICATIONS, EDUCATION, EXPERIENCE, PROFILE, PROJECTS, TECH_STACK } from '../../data/portfolio.data';
+import { CERTIFICATIONS, CREDLY_BADGES, EDUCATION, EXPERIENCE, PROFILE, PROJECTS, TECH_STACK } from '../../data/portfolio.data';
 import { ProfileCardTilt } from '../../profile-card-tilt';
 import { RevealDirective } from '../../shared/reveal.directive';
 import { SectionHeader } from '../../shared/section-header';
@@ -44,7 +44,7 @@ export class About implements OnDestroy {
   protected readonly stats = [
     { value: PROJECTS.length, label: 'Projects built & designed' },
     { value: TECH_STACK.reduce((n, c) => n + c.items.length, 0), label: 'Technologies in my stack' },
-    { value: CERTIFICATIONS.length, label: 'Certifications & courses' }
+    { value: CERTIFICATIONS.length + CREDLY_BADGES.length, label: 'Certifications & courses' }
   ];
 
   private readonly card = viewChild.required<ElementRef<HTMLElement>>('card');
