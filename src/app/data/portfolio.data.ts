@@ -387,8 +387,52 @@ export const PROJECTS: Project[] = [
     repos: [{ label: 'Website code', url: GH + 'AMBER' }, { label: 'UI design', url: GH + 'AMBERS_UI_DESIGN' }]
   },
   {
-    slug: 'afkar',
+    slug: 'ohayami',
     showcase: true,
+    name: 'Ohayami Trans',
+    tagline: 'Bus booking website · Easy Bus PH',
+    categories: ['Web'],
+    summary: 'Online bus booking website for Ohayami Trans, built on WordPress during my front-end role at Easy Bus PH.',
+    overview:
+      'The public website for Ohayami Trans, powered by Easy Bus PH. Built with WordPress and Elementor from approved design mockups, with custom CSS for page sections and mobile-first responsive layouts so passengers can search trips and book online.',
+    technologies: ['WordPress', 'Elementor', 'CSS3'],
+    image: 'projects/ohayami.jpg',
+    accent: '#7c3aed',
+    liveUrl: 'https://ohayami.ph/',
+    liveLabel: 'Visit website'
+  },
+  {
+    slug: 'raymondbus',
+    showcase: true,
+    name: 'Raymond Transportation',
+    tagline: 'Bus booking website · Easy Bus PH',
+    categories: ['Web'],
+    summary: 'Online bus booking website for Raymond Transportation, built on WordPress during my front-end role at Easy Bus PH.',
+    overview:
+      'The public website for Raymond Transportation, powered by Easy Bus PH. Built with WordPress and Elementor from approved design mockups, with custom CSS for page sections and mobile-first responsive layouts so passengers can search trips and book online.',
+    technologies: ['WordPress', 'Elementor', 'CSS3'],
+    image: 'projects/raymondbus.jpg',
+    accent: '#16a34a',
+    liveUrl: 'https://raymondbus.ph/',
+    liveLabel: 'Visit website'
+  },
+  {
+    slug: 'elavil',
+    showcase: true,
+    name: 'Elavil Tours',
+    tagline: 'Bus booking website · Easy Bus PH',
+    categories: ['Web'],
+    summary: 'Online bus booking website for Elavil Tours Phils Inc., built on WordPress during my front-end role at Easy Bus PH.',
+    overview:
+      'The public website for Elavil Tours Phils Inc., powered by Easy Bus PH. Built with WordPress and Elementor from approved design mockups, with custom CSS for page sections and mobile-first responsive layouts so passengers can search trips and book online.',
+    technologies: ['WordPress', 'Elementor', 'CSS3'],
+    image: 'projects/elavil.jpg',
+    accent: '#1d4ed8',
+    liveUrl: 'https://elavil.ph/',
+    liveLabel: 'Visit website'
+  },
+  {
+    slug: 'afkar',
     name: 'AFKAR',
     tagline: 'Renewable energy website redesign',
     categories: ['Design'],
@@ -402,7 +446,6 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: 'everyjuana',
-    showcase: true,
     name: "EveryJuan'a",
     tagline: 'Job finding platform',
     categories: ['Web'],
@@ -415,7 +458,6 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: 'the-pizzeria',
-    showcase: true,
     name: 'The Pizzeria',
     tagline: 'Pizza ordering website',
     categories: ['Web'],

@@ -35,6 +35,10 @@
             <button type="button" class="cert__view" (click)="certViewer.open(c.image, c.title)" [attr.aria-label]="'View certificate: ' + c.title">
               <i class="fa-regular fa-eye" aria-hidden="true"></i>
             </button>
+            <!-- Hover preview so the certificate shows without clicking -->
+            <span class="cert__preview" aria-hidden="true">
+              <img [src]="c.image" alt="" loading="lazy" decoding="async" />
+            </span>
           }
         </li>
       }

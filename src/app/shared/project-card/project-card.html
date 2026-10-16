@@ -1,7 +1,16 @@
 @let p = project();
 <article class="pcard" [attr.aria-labelledby]="'project-' + p.slug">
   <div class="pcard__media" [class.is-contain]="p.imageFit === 'contain'">
-    @if (p.image) {
+    @if (p.image && p.liveUrl) {
+      <!-- Image opens the live site directly, without going through the case study -->
+      <a class="pcard__media-link" [href]="p.liveUrl" target="_blank" rel="noopener noreferrer">
+        <img [src]="p.image" [style.object-position]="p.imagePosition" alt="" loading="lazy" decoding="async" width="960" height="600" />
+        <span class="visually-hidden">Open {{ p.name }} ({{ p.liveLabel ?? 'Live demo' }}, new tab)</span>
+        <span class="pcard__visit" aria-hidden="true">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> {{ p.liveLabel ?? 'Live demo' }}
+        </span>
+      </a>
+    } @else if (p.image) {
       <img [src]="p.image" [style.object-position]="p.imagePosition" alt="" loading="lazy" decoding="async" width="960" height="600" />
     } @else {
       <!-- No screenshot yet: branded cover instead of a stock image -->

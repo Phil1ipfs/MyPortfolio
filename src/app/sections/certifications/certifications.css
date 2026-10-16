@@ -58,6 +58,7 @@
 }
 
 .cert {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 14px;
@@ -69,6 +70,7 @@
 }
 
 .cert:hover {
+    z-index: 5;
     border-color: var(--border-strong);
     background: rgba(255, 255, 255, 0.035);
 }
@@ -117,6 +119,65 @@
 .cert__view:hover {
     color: #fff;
     background: var(--accent);
+}
+
+/* The whole card opens the full viewer, not just the eye icon. */
+.cert:has(.cert__view) {
+    cursor: zoom-in;
+}
+
+.cert__view::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+}
+
+.cert:has(.cert__view:focus-visible) {
+    outline: 2px solid var(--accent-strong);
+    outline-offset: 2px;
+}
+
+/* Floating certificate preview on hover (pointer devices only). */
+.cert__preview {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 10px);
+    z-index: 10;
+    width: min(340px, 90vw);
+    padding: 6px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-strong);
+    background: var(--surface);
+    box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.7);
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, 8px) scale(0.97);
+    transform-origin: bottom center;
+    transition: opacity 0.2s ease, transform 0.25s var(--ease-out), visibility 0.2s;
+}
+
+.cert__preview img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: calc(var(--radius) - 4px);
+}
+
+@media (hover: hover) {
+    .cert:hover .cert__preview {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, 0) scale(1);
+        transition-delay: 0.12s;
+    }
+}
+
+@media (hover: none) {
+    .cert__preview {
+        display: none;
+    }
 }
 
 .certs__more {

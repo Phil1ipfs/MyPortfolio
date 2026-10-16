@@ -70,6 +70,58 @@
     transform: scale(1.035);
 }
 
+/* Image links straight to the live site; sits above the card-wide CTA overlay. */
+.pcard__media-link {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    display: block;
+    cursor: pointer;
+}
+
+.pcard__media-link:focus-visible {
+    outline: 2px solid var(--accent-strong);
+    outline-offset: -4px;
+}
+
+.pcard__visit {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: rgba(6, 9, 19, 0.8);
+    border: 1px solid var(--border-strong);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.25s ease, transform 0.25s var(--ease-out);
+}
+
+.pcard__visit i {
+    font-size: 0.85em;
+}
+
+.pcard__media-link:hover .pcard__visit,
+.pcard__media-link:focus-visible .pcard__visit {
+    opacity: 1;
+    transform: none;
+}
+
+@media (hover: none) {
+    .pcard__visit {
+        opacity: 1;
+        transform: none;
+    }
+}
+
 .pcard__cover {
     position: absolute;
     inset: 0;
