@@ -394,8 +394,8 @@ export const PROJECTS: Project[] = [
     categories: ['Web'],
     summary: 'Online bus booking website for Ohayami Trans, built on WordPress during my front-end role at Easy Bus PH.',
     overview:
-      'The public website for Ohayami Trans, powered by Easy Bus PH. Built with WordPress and Elementor from approved design mockups, with custom CSS for page sections and mobile-first responsive layouts so passengers can search trips and book online.',
-    technologies: ['WordPress', 'Elementor', 'CSS3'],
+      'The public website for Ohayami Trans, powered by Easy Bus PH. Built with WordPress and Elementor from approved design mockups, with mobile-first responsive layouts so passengers can search trips and book online.',
+    technologies: ['WordPress', 'Elementor'],
     image: 'projects/ohayami.jpg',
     accent: '#7c3aed',
     liveUrl: 'https://ohayami.ph/',
@@ -409,8 +409,8 @@ export const PROJECTS: Project[] = [
     categories: ['Web'],
     summary: 'Online bus booking website for Raymond Transportation, built on WordPress during my front-end role at Easy Bus PH.',
     overview:
-      'The public website for Raymond Transportation, powered by Easy Bus PH. Built with WordPress and Elementor from approved design mockups, with custom CSS for page sections and mobile-first responsive layouts so passengers can search trips and book online.',
-    technologies: ['WordPress', 'Elementor', 'CSS3'],
+      'The public website for Raymond Transportation, powered by Easy Bus PH. Built with WordPress and Elementor from approved design mockups, with mobile-first responsive layouts so passengers can search trips and book online.',
+    technologies: ['WordPress', 'Elementor'],
     image: 'projects/raymondbus.jpg',
     accent: '#16a34a',
     liveUrl: 'https://raymondbus.ph/',
@@ -424,8 +424,8 @@ export const PROJECTS: Project[] = [
     categories: ['Web'],
     summary: 'Online bus booking website for Elavil Tours Phils Inc., built on WordPress during my front-end role at Easy Bus PH.',
     overview:
-      'The public website for Elavil Tours Phils Inc., powered by Easy Bus PH. Built with WordPress and Elementor from approved design mockups, with custom CSS for page sections and mobile-first responsive layouts so passengers can search trips and book online.',
-    technologies: ['WordPress', 'Elementor', 'CSS3'],
+      'The public website for Elavil Tours Phils Inc., powered by Easy Bus PH. Built with WordPress and Elementor from approved design mockups, with mobile-first responsive layouts so passengers can search trips and book online.',
+    technologies: ['WordPress', 'Elementor'],
     image: 'projects/elavil.jpg',
     accent: '#1d4ed8',
     liveUrl: 'https://elavil.ph/',
@@ -544,7 +544,6 @@ export const EXPERIENCE = [
     period: 'Sep 2025 – Sep 2026',
     points: [
       'Built and maintained WordPress websites, translating approved design mockups into pixel-accurate, responsive pages with Elementor',
-      "Customized page sections and interactive components with custom CSS where Elementor's built-in controls fell short",
       'Ensured pages displayed correctly across devices and browsers, with mobile-first responsive behavior',
       'Reviewed builds against design specs and applied feedback quickly to meet release timelines'
     ]
