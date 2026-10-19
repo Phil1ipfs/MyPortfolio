@@ -616,9 +616,9 @@ export const EXPERIENCE = [
     org: 'Easy Bus PH',
     period: 'Sep 2025 – Sep 2026',
     points: [
-      'Built and maintained WordPress websites, translating approved design mockups into pixel-accurate, responsive pages with Elementor',
-      'Ensured pages displayed correctly across devices and browsers, with mobile-first responsive behavior',
-      'Reviewed builds against design specs and applied feedback quickly to meet release timelines'
+      'Delivered 10 WordPress websites with Elementor, converting Figma designs into responsive, release-ready pages',
+      'Tested all 10 sites across mobile and desktop screens, fixing layout inconsistencies before each launch',
+      'Implemented design-review feedback over 12 months of revision cycles, getting every page approved for release'
     ]
   }
 ];
