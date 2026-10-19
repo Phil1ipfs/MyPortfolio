@@ -93,6 +93,54 @@ export const PROJECT_FILTERS: ('All' | ProjectCategory)[] = ['All', 'Mobile', 'W
 
 export const PROJECTS: Project[] = [
   {
+    slug: 'devflow',
+    name: 'DevFlow',
+    tagline: 'Project management and IT helpdesk platform',
+    categories: ['Web', 'Full Stack'],
+    summary:
+      'A full-stack workspace for engineering teams: projects, a Kanban board, task tracking and an IT helpdesk queue, with real-time notifications.',
+    overview:
+      'DevFlow brings projects, Kanban boards and IT helpdesk tickets into one workspace, so engineering and operations teams stop losing context between tools. A Next.js web app talks to an ASP.NET Core API backed by PostgreSQL, with live updates over SignalR.',
+    technologies: [
+      'Next.js', 'TypeScript', 'Tailwind CSS', 'shadcn/ui', 'TanStack Query', 'ASP.NET Core', 'C#',
+      'EF Core', 'PostgreSQL', 'SignalR', 'Docker', 'GitHub Actions', 'Playwright', 'xUnit'
+    ],
+    image: 'projects/devflow.jpg',
+    accent: '#2dd4bf',
+    featured: true,
+    date: 'Oct 2026',
+    liveUrl: 'https://devflow-eight-lovat.vercel.app/',
+    caseStudy: {
+      problem:
+        'Engineering teams often plan work in one tool and handle IT support requests in another, so context gets lost between the two.',
+      solution:
+        'One multi-tenant workspace with projects, a Kanban board and a helpdesk ticket queue, where every change is checked by role, recorded in an audit log and pushed to teammates in real time.',
+      role: [
+        'Built the Next.js web app with TypeScript, Tailwind CSS, shadcn/ui and TanStack Query',
+        'Built the ASP.NET Core API with EF Core, PostgreSQL and ASP.NET Core Identity',
+        'Added real-time notifications with SignalR',
+        'Wrote API integration tests (xUnit, against real PostgreSQL) and end-to-end tests (Playwright)',
+        'Set up Docker images, GitHub Actions CI and the Vercel + Render + Neon deployment'
+      ],
+      features: [
+        'Accounts with sign-in lockout, password reset by email, HttpOnly session cookies, CSRF protection and rate limiting',
+        'Workspaces with Owner, Admin and Member roles, email invitations and strict per-organization data isolation',
+        'Kanban board with pointer and keyboard drag-and-drop, plus a list view with search, filters and pagination',
+        'Task details with comments and activity history, project keys (WEB-42) and a My tasks view',
+        'Helpdesk ticket queue with internal notes, first-response and resolution tracking, and escalation of urgent tickets',
+        'Real-time in-app notifications and due-date reminders',
+        'Reports on tasks, tickets and workload, and an admin audit log'
+      ],
+      architecture: [
+        { layer: 'Web app', items: ['Next.js', 'TypeScript', 'Tailwind CSS', 'shadcn/ui', 'TanStack Query', 'dnd-kit'] },
+        { layer: 'API', items: ['ASP.NET Core', 'EF Core', 'Identity', 'FluentValidation', 'SignalR'] },
+        { layer: 'Database', items: ['PostgreSQL (Neon)'] },
+        { layer: 'Testing', items: ['xUnit', 'Playwright'] },
+        { layer: 'Deployment', items: ['Vercel', 'Render', 'Docker', 'GitHub Actions'] }
+      ]
+    }
+  },
+  {
     slug: 'literexia',
     name: 'Literexia',
     tagline: 'Assistive learning app for students with dyslexia',
@@ -358,16 +406,41 @@ export const PROJECTS: Project[] = [
   {
     slug: 'photo-booth',
     showcase: true,
-    name: 'Photo Booth Website',
-    tagline: 'Web app for a photo booth experience',
-    categories: ['Web'],
-    summary: 'A React web app developed for a photo booth experience.',
-    overview: 'A web application developed for a photo booth experience, built with React and CSS and designed in Figma.',
-    technologies: ['React', 'CSS3', 'Figma'],
-    image: 'projects/photobooth.png',
-    accent: '#06b6d4',
+    name: 'PhotoBooth',
+    tagline: 'Online photo booth with live strips and a Premium plan',
+    categories: ['Web', 'Full Stack'],
+    summary:
+      'A browser photo booth: pick from 40+ templates, shoot a countdown sequence and download, print or share the strip, including animated Live Strips as MP4 or GIF.',
+    overview:
+      'PhotoBooth brings the classic photo strip to the browser, on phone or desktop with no download. Users pick a template, a countdown snaps each photo (any shot can be retaken), and the strip can be downloaded, printed, shared or saved to a personal gallery. Accounts and storage run on Supabase, and a prepaid Premium pass is sold through PayMongo.',
+    technologies: ['React', 'JavaScript', 'Supabase', 'PayMongo', 'Vercel Functions', 'WebCodecs', 'Mediabunny', 'gifenc', 'CSS3', 'Figma'],
+    image: 'projects/photobooth.jpg',
+    accent: '#be185d',
     liveUrl: 'https://photobooth-seven-sooty.vercel.app/',
-    repos: [{ label: 'GitHub', url: GH + 'photobooth' }]
+    repos: [{ label: 'GitHub', url: GH + 'photobooth' }],
+    caseStudy: {
+      role: [
+        'Designed the interface in Figma and built the React front end',
+        'Set up Supabase for authentication, the database and photo storage',
+        'Built the PayMongo checkout and webhook as Vercel serverless functions',
+        'Built the Live Strips pipeline that exports animated strips as MP4 and GIF in the browser'
+      ],
+      features: [
+        '40+ photo strip templates: cute, minimalist, retro, vintage and seasonal',
+        'Countdown capture with per-photo retakes, filters and multiple layouts',
+        'Live Strips: boomerang-style animated strips exported as MP4 (WebCodecs + Mediabunny) or GIF',
+        'Download, print or share, or save strips to a personal gallery with favorites',
+        'Guest mode to try it without an account',
+        'Free plan plus a prepaid ₱99/year Premium pass (GCash, Maya or card via PayMongo) with all templates, advanced layouts and HD downloads',
+        'Admin dashboard with usage charts'
+      ],
+      architecture: [
+        { layer: 'Front end', items: ['React', 'Custom router', 'react-webcam', 'Canvas'] },
+        { layer: 'Media export', items: ['WebCodecs', 'Mediabunny (MP4)', 'gifenc (GIF)'] },
+        { layer: 'Backend', items: ['Supabase Auth', 'Postgres', 'Storage'] },
+        { layer: 'Payments', items: ['PayMongo Checkout', 'Vercel Functions'] }
+      ]
+    }
   },
   {
     slug: 'amber',
@@ -477,17 +550,17 @@ export const PROJECTS: Project[] = [
 export interface TechCategory { title: string; icon: string; items: string[]; }
 
 export const TECH_STACK: TechCategory[] = [
-  { title: 'Languages', icon: 'fa-solid fa-terminal', items: ['JavaScript', 'TypeScript', 'Python', 'Dart', 'Kotlin', 'PHP', 'Luau', 'SQL', 'HTML & CSS'] },
+  { title: 'Languages', icon: 'fa-solid fa-terminal', items: ['JavaScript', 'TypeScript', 'Python', 'Dart', 'Kotlin', 'PHP', 'Luau', 'C#', 'SQL', 'HTML & CSS'] },
   {
     title: 'Frontend',
     icon: 'fa-solid fa-code',
-    items: ['React', 'Angular', 'Vite', 'Tailwind CSS', 'Bootstrap', 'Angular Material', 'Radix UI', 'React Router', 'Zustand', 'RxJS']
+    items: ['React', 'Next.js', 'Angular', 'Vite', 'Tailwind CSS', 'Bootstrap', 'Angular Material', 'Radix UI', 'React Router', 'Zustand', 'RxJS']
   },
   { title: 'Mobile & Desktop', icon: 'fa-solid fa-mobile-screen', items: ['Flutter', 'React Native', 'Expo', 'Jetpack Compose', 'Android Studio', 'Electron'] },
   {
     title: 'Backend & APIs',
     icon: 'fa-solid fa-server',
-    items: ['Node.js', 'Express.js', 'FastAPI', 'REST APIs', 'Socket.IO', 'WebSockets', 'JWT', 'Passport.js', 'Supabase Auth']
+    items: ['Node.js', 'Express.js', 'ASP.NET Core', 'FastAPI', 'REST APIs', 'Socket.IO', 'WebSockets', 'JWT', 'Passport.js', 'Supabase Auth']
   },
   {
     title: 'Databases & Storage',
@@ -502,12 +575,12 @@ export const TECH_STACK: TechCategory[] = [
   {
     title: 'Testing & Quality',
     icon: 'fa-solid fa-vial-circle-check',
-    items: ['Vitest', 'Jest', 'React Testing Library', 'Playwright', 'pytest', 'Karma & Jasmine', 'Espresso', 'ESLint', 'Zod']
+    items: ['Vitest', 'Jest', 'React Testing Library', 'Playwright', 'pytest', 'xUnit', 'Karma & Jasmine', 'Espresso', 'ESLint', 'Zod']
   },
   {
     title: 'Cloud & DevOps',
     icon: 'fa-solid fa-cloud',
-    items: ['Vercel', 'Render', 'Cloudflare Workers', 'AWS EC2', 'AWS Amplify', 'Docker', 'Git']
+    items: ['Vercel', 'Render', 'Cloudflare Workers', 'AWS EC2', 'AWS Amplify', 'Docker', 'GitHub Actions', 'Git']
   },
   {
     title: 'Design, CMS & Games',

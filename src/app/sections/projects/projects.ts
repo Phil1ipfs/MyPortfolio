@@ -15,8 +15,8 @@ type Filter = 'All' | ProjectCategory;
 export class Projects {
   protected readonly filters = PROJECT_FILTERS;
 
-  /** Featured order follows the brief: Literexia, Bulldog Exchange, Pinkventory. */
-  protected readonly lead = PROJECTS.find(p => p.slug === 'literexia')!;
+  /** DevFlow leads; the rest follow data order: Literexia, Bulldog Exchange, Pinkventory. */
+  protected readonly lead = PROJECTS.find(p => p.slug === 'devflow')!;
   protected readonly featured = PROJECTS.filter(p => p.featured && p !== this.lead);
   /** Older portfolio projects, promoted into the main block below the featured ones. */
   protected readonly showcase = PROJECTS.filter(p => p.showcase);

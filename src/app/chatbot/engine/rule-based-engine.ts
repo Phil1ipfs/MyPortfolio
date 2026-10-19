@@ -159,6 +159,7 @@ function techsIn(q: string): TechEvidence[] {
 /* ------------------------------------------------------------------ */
 
 const PROJECT_ALIASES: Record<string, string[]> = {
+  devflow: ['devflow', 'dev flow', 'helpdesk', 'kanban', 'project management'],
   literexia: ['literexia', 'dyslexia', 'dyslexic', 'capstone'],
   'bulldog-exchange': ['bulldog', 'bulldog exchange', 'bulldogs exchange'],
   pinkventory: ['pinkventory', 'pinkventorys', 'inventory'],
@@ -175,7 +176,10 @@ const PROJECT_ALIASES: Record<string, string[]> = {
   afkar: ['afkar'],
   reusify: ['reusify'],
   everyjuana: ["everyjuan'a", 'everyjuana', 'every juan', 'everyjuan'],
-  'the-pizzeria': ['pizzeria', 'pizza']
+  'the-pizzeria': ['pizzeria', 'pizza'],
+  ohayami: ['ohayami', 'easy bus', 'easybus'],
+  raymondbus: ['raymond', 'easy bus', 'easybus'],
+  elavil: ['elavil', 'easy bus', 'easybus']
 };
 
 function projectsIn(q: string): Project[] {

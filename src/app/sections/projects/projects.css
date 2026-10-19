@@ -1,6 +1,6 @@
 /* ---------- Featured ---------- */
 
-/* 6-column track: lead (full) → 2 featured → showcase rows of 2 then 3. */
+/* 6-column track: lead (full) → 3 featured → showcase rows of 2 then 3. */
 .featured {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -11,13 +11,13 @@
     grid-column: 1 / -1;
 }
 
-.featured__pair,
 .featured__showcase {
     grid-column: span 3;
 }
 
-/* Children: lead (1), pair (2–3), showcase (4–8) → the last three showcase cards sit three to a row. */
-.featured__showcase:nth-child(n + 6) {
+/* Children: lead (1), featured (2–4), showcase (5–9) → the featured row and the last three showcase cards sit three to a row. */
+.featured__pair,
+.featured__showcase:nth-child(n + 7) {
     grid-column: span 2;
 }
 
@@ -119,9 +119,14 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    /* Tablet: showcase cards go two per row. */
-    .featured__showcase:nth-child(n + 6) {
+    /* Tablet: cards go two per row; the first featured card spans the row. */
+    .featured__pair,
+    .featured__showcase:nth-child(n + 7) {
         grid-column: span 3;
+    }
+
+    .featured__pair:nth-child(2) {
+        grid-column: 1 / -1;
     }
 }
 
